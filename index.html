@@ -1,127 +1,523 @@
-index.html<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Border Security Dashboard</title>
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        :root {
-            --color-bg: #f5f5f2;
-            --color-surface: #ffffff;
-            --color-text: #1a1a1a;
-            --color-primary: #2180a8;
-            --color-success: #2d8c8d;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: var(--color-bg);
-            color: var(--color-text);
-            padding: 20px;
-        }
-        .container { max-width: 1200px; margin: 0 auto; }
-        header { text-align: center; margin-bottom: 40px; }
-        h1 { font-size: 2.5em; margin-bottom: 10px; color: var(--color-primary); }
-        .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 40px; }
-        .stat-card {
-            background: var(--color-surface);
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .stat-number { font-size: 2.5em; font-weight: bold; color: var(--color-primary); }
-        .stat-label { font-size: 0.9em; color: #666; margin-top: 10px; }
-        .mission { background: linear-gradient(135deg, #e8b4a8 0%, #d4a89f 100%); color: white; padding: 30px; border-radius: 12px; margin-bottom: 30px; font-size: 1.2em; text-align: center; }
-        .phase { background: var(--color-surface); padding: 20px; margin-bottom: 20px; border-radius: 8px; border-left: 4px solid var(--color-primary); }
-        .phase-title { font-size: 1.4em; font-weight: bold; color: var(--color-primary); margin-bottom: 15px; }
-        .milestone { background: #f9f7f4; padding: 15px; margin-bottom: 10px; border-radius: 6px; border-left: 3px solid var(--color-success); }
-        .milestone-title { font-weight: bold; color: var(--color-primary); }
-        .milestone-desc { color: #666; margin-top: 5px; font-size: 0.9em; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Border Security Platform — Dual-View Operations & Audit</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --color-bg: #0f1419;
+      --color-surface: #1a1f2e;
+      --color-primary: #00d4ff;
+      --color-success: #2d8c8d;
+      --color-warning: #ff9500;
+      --color-danger: #ff4444;
+      --color-text: #e0e0e0;
+      --color-text-muted: #b0b0b0;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+    .container { max-width: 1600px; margin: 0 auto; }
+    header {
+      background: linear-gradient(135deg, #0a0e17 0%, #1a1f2e 100%);
+      padding: 20px;
+      border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    h1 { font-size: 24px; font-weight: 600; }
+    .tabs {
+      display: flex; gap: 20px; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    .tab-btn {
+      padding: 12px 20px; background: none; border: none; color: var(--color-text-muted);
+      cursor: pointer; font-size: 14px; font-weight: 500; border-bottom: 3px solid transparent;
+      transition: all 0.3s; position: relative;
+    }
+    .tab-btn:hover { color: var(--color-primary); }
+    .tab-btn.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-bottom: 30px; }
+    .card {
+      background: var(--color-surface); padding: 20px; border-radius: 8px;
+      border: 1px solid rgba(0, 212, 255, 0.1); transition: all 0.3s;
+    }
+    .card:hover { border-color: rgba(0, 212, 255, 0.3); background: rgba(0, 212, 255, 0.05); }
+    .card h3 { margin-bottom: 15px; color: var(--color-primary); font-size: 14px; text-transform: uppercase; letter-spacing: 1px; }
+    .stat-value { font-size: 32px; font-weight: 700; color: var(--color-primary); margin: 10px 0; }
+    .stat-label { font-size: 12px; color: var(--color-text-muted); text-transform: uppercase; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: 13px;
+      margin-top: 15px;
+    }
+    th { background: rgba(0, 212, 255, 0.1); padding: 12px; text-align: left; border-bottom: 1px solid rgba(0, 212, 255, 0.2); }
+    td { padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    tr:hover { background: rgba(0, 212, 255, 0.05); }
+    .badge {
+      display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 11px; font-weight: 600;
+      text-transform: uppercase;
+    }
+    .badge-success { background: rgba(45, 140, 141, 0.3); color: #2d8c8d; }
+    .badge-warning { background: rgba(255, 149, 0, 0.3); color: #ff9500; }
+    .badge-danger { background: rgba(255, 68, 68, 0.3); color: #ff4444; }
+    .chart { height: 200px; background: rgba(0, 212, 255, 0.05); border-radius: 4px; padding: 15px; display: flex; align-items: flex-end; gap: 10px; }
+    .bar { flex: 1; background: linear-gradient(180deg, var(--color-primary), rgba(0, 212, 255, 0.3)); border-radius: 2px; }
+    .section { margin-bottom: 40px; }
+    .section-title { font-size: 16px; font-weight: 600; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid rgba(0, 212, 255, 0.2); }
+    .time-display { font-size: 12px; color: var(--color-primary); margin-right: 20px; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 1000; align-items: center; justify-content: center; }
+    .modal.active { display: flex; }
+    .modal-content { background: var(--color-surface); padding: 30px; border-radius: 8px; max-width: 600px; max-height: 80vh; overflow-y: auto; border: 1px solid var(--color-primary); }
+    .close-btn { float: right; cursor: pointer; color: var(--color-primary); font-size: 24px; }
+    button {
+      background: var(--color-primary); color: var(--color-bg); border: none; padding: 10px 20px;
+      border-radius: 4px; cursor: pointer; font-weight: 600; transition: all 0.3s;
+    }
+    button:hover { background: #00b8cc; transform: translateY(-2px); }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>AI Border Security Project</h1>
-            <p style="font-size: 1.1em; color: var(--color-primary);">National Security Fairness Framework</p>
-        </header>
+<header>
+  <div>
+    <h1>⚡ BORDER SECURITY COMMAND CENTRE</h1>
+    <p style="font-size: 12px; color: var(--color-text-muted); margin-top: 5px;">National Security + Compliance Dual-Use Platform</p>
+  </div>
+  <div class="time-display" id="timeDisplay">00:00:00 IST</div>
+</header>
 
-        <div class="mission">
-            You're not just building an app—you're positioning India as a leader in ethical border AI. This dashboard guides your 12-month journey.
-        </div>
+<div class="container">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('operations')">OPERATIONS &amp; THREATS</button>
+    <button class="tab-btn" onclick="switchTab('oversight')">OVERSIGHT &amp; AUDIT</button>
+    <button class="tab-btn" onclick="switchTab('refugee')">REFUGEE/CAMP ANALYSIS</button>
+  </div>
 
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number">5-10</div>
-                <div class="stat-label">Hours/Week</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Major Phases</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Key Artifacts</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">12</div>
-                <div class="stat-label">Months Timeline</div>
-            </div>
+  <!-- OPERATIONS TAB -->
+  <div id="operations" class="tab-content active">
+    <div class="section">
+      <div class="section-title">🚨 COMMAND & CONTROL STATUS</div>
+      <div class="grid">
+        <div class="card">
+          <h3>🦸 AGENTS ACTIVE</h3>
+          <div class="stat-value">24</div>
+          <div class="stat-label">AI threat detection engines</div>
+          <div style="margin-top: 10px; font-size: 11px; color: #2d8c8d;">✓ Optimal</div>
         </div>
-
-        <div class="phase">
-            <div class="phase-title">Phase 1: Foundation (Months 1-3)</div>
-            <div class="milestone">
-                <div class="milestone-title">Paper Launch</div>
-                <div class="milestone-desc">Finish paper, polish abstract, upload to arXiv with DOI</div>
-            </div>
-            <div class="milestone">
-                <div class="milestone-title">Project Brief</div>
-                <div class="milestone-desc">Create 1-2 page document defining WHAT, WHY, HOW, TIMELINE</div>
-            </div>
-            <div class="milestone">
-                <div class="milestone-title">Copilot Setup</div>
-                <div class="milestone-desc">Create Perplexity Space with custom instructions for consistency</div>
-            </div>
+        <div class="card">
+          <h3>📄 DATA STREAMS</h3>
+          <div class="stat-value">157</div>
+          <div class="stat-label">Live sensor/intel feeds</div>
+          <div style="margin-top: 10px; font-size: 11px;">📍 Satellite, Sensors, OSINT</div>
         </div>
-
-        <div class="phase">
-            <div class="phase-title">Phase 2: Relationships (Months 4-6)</div>
-            <div class="milestone">
-                <div class="milestone-title">Think Tank Outreach</div>
-                <div class="milestone-desc">Engage ORF, Carnegie India, Gateway House for credibility</div>
-            </div>
-            <div class="milestone">
-                <div class="milestone-title">Concept Note</div>
-                <div class="milestone-desc">Build 5-page strategic document for government stakeholders</div>
-            </div>
-            <div class="milestone">
-                <div class="milestone-title">Network Building</div>
-                <div class="milestone-desc">Establish relationships with 3 trusted intermediaries</div>
-            </div>
+        <div class="card">
+          <h3>🔍 DETECTIONS (24H)</h3>
+          <div class="stat-value">43</div>
+          <div class="stat-label">Pattern flags, alerts</div>
+          <div style="margin-top: 10px; font-size: 11px; color: #ff9500;">↑ 12% vs avg</div>
         </div>
-
-        <div class="phase">
-            <div class="phase-title">Phase 3: Engagement (Months 7-12)</div>
-            <div class="milestone">
-                <div class="milestone-title">Prototype Demo</div>
-                <div class="milestone-desc">n8n + Bubble MVP showing threat detection + fairness audit</div>
-            </div>
-            <div class="milestone">
-                <div class="milestone-title">Government Pitch</div>
-                <div class="milestone-desc">Present to MHA/BSF with full proposal and pilot plan</div>
-            </div>
-            <div class="milestone">
-                <div class="milestone-title">Pilot & Advisory</div>
-                <div class="milestone-desc">Launch small pilot or advisory engagement generating income</div>
-            </div>
+        <div class="card">
+          <h3>⏱ MTTD (Mean Time to Detect)</h3>
+          <div class="stat-value">3.2m</div>
+          <div class="stat-label">From signal to alert</div>
+          <div style="margin-top: 10px; font-size: 11px;">Target: &lt;5m</div>
         </div>
-
-        <div style="text-align: center; margin-top: 50px; padding: 20px; background: var(--color-surface); border-radius: 8px;">
-            <p style="color: var(--color-primary); font-weight: bold; font-size: 1.1em;">Your focus: Move from "internal project" to "public artifact."</p>
-            <p style="color: #666; margin-top: 10px;">Every milestone builds credibility. Every artifact moves you closer to national impact.</p>
-        </div>
+      </div>
     </div>
+
+    <div class="section">
+      <div class="section-title">⚠ ACTIVE THREATS (Prioritized Queue)</div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th><th>TYPE</th><th>ZONE</th><th>CONFIDENCE</th><th>ACTION</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr onclick="openModal('threat1')">
+            <td>#T1-2847</td>
+            <td><span class="badge badge-danger">Infiltration Group</span></td>
+            <td>Bengal Border North</td>
+            <td>98%</td>
+            <td><button onclick="event.stopPropagation(); escalate('T1-2847')">Escalate</button></td>
+          </tr>
+          <tr onclick="openModal('threat2')">
+            <td>#T1-2843</td>
+            <td><span class="badge badge-warning">Anomalous Movement</span></td>
+            <td>Punjab Border</td>
+            <td>87%</td>
+            <td><button onclick="event.stopPropagation(); investigate('T1-2843')">Investigate</button></td>
+          </tr>
+          <tr onclick="openModal('threat3')">
+            <td>#T1-2839</td>
+            <td><span class="badge badge-warning">Supply Chain</span></td>
+            <td>Assam Border</td>
+            <td>72%</td>
+            <td><button onclick="event.stopPropagation(); monitor('T1-2839')">Monitor</button></td>
+          </tr>
+          <tr onclick="openModal('threat4')">
+            <td>#T1-2835</td>
+            <td><span class="badge badge-success">False Positive Review</span></td>
+            <td>Mizoram Border</td>
+            <td>31%</td>
+            <td><button onclick="event.stopPropagation(); clearFalsePos('T1-2835')">Clear</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">🗺 THREAT HOTSPOTS (GIS View)</div>
+      <div class="card">
+        <div class="chart">
+          <div class="bar" style="height: 60%;"></div>
+          <div class="bar" style="height: 80%;"></div>
+          <div class="bar" style="height: 45%;"></div>
+          <div class="bar" style="height: 90%;"></div>
+          <div class="bar" style="height: 65%;"></div>
+          <div class="bar" style="height: 40%;"></div>
+        </div>
+        <div style="margin-top: 15px; font-size: 12px; color: var(--color-text-muted);">
+          Peak zones: Bengal North (90%), Assam (80%), Punjab Border (65%)
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📊 THREAT TREND (7-Day Prediction)</div>
+      <div class="grid">
+        <div class="card">
+          <h3>ROUTE ANOMALIES</h3>
+          <div class="stat-value" style="font-size: 24px;">+14</div>
+          <div class="stat-label">Detected vs baseline</div>
+        </div>
+        <div class="card">
+          <h3>CLUSTERING EVENTS</h3>
+          <div class="stat-value" style="font-size: 24px;">8</div>
+          <div class="stat-label">Suspected coordination</div>
+        </div>
+        <div class="card">
+          <h3>TEMPORAL SHIFT</h3>
+          <div class="stat-value" style="font-size: 24px;">+3h</div>
+          <div class="stat-label">Earlier crossing attempts</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERSIGHT & AUDIT TAB -->
+  <div id="oversight" class="tab-content">
+    <div class="section">
+      <div class="section-title">⚖️ FAIRNESS & BIAS DETECTION DASHBOARD</div>
+      <div class="grid">
+        <div class="card">
+          <h3>FAIRNESS INDEX</h3>
+          <div class="stat-value">87%</div>
+          <div class="stat-label">Treatment parity across zones</div>
+          <div style="margin-top: 10px; font-size: 11px; color: #2d8c8d;">✓ No Demographic Bias Detected</div>
+        </div>
+        <div class="card">
+          <h3>AUDIT COMPLETENESS</h3>
+          <div class="stat-value">99%</div>
+          <div class="stat-label">Logged decisions with rationale</div>
+          <div style="margin-top: 10px; font-size: 11px;">📋 Decision Log ID: AUD-2847-92</div>
+        </div>
+        <div class="card">
+          <h3>FALSE POSITIVE RATE</h3>
+          <div class="stat-value">4.2%</div>
+          <div class="stat-label">Cleared after review</div>
+          <div style="margin-top: 10px; font-size: 11px; color: #ff9500;">⚠ Review 3 False Positives</div>
+        </div>
+        <div class="card">
+          <h3>HUMAN-IN-LOOP STATUS</h3>
+          <div class="stat-value">100%</div>
+          <div class="stat-label">High-risk decisions reviewed</div>
+          <div style="margin-top: 10px; font-size: 11px;">✅ Logging: Active</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">📈 TREATMENT PATTERN ANALYSIS (Zone x Region Breakdown)</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Zone</th><th>Stopped</th><th>Questioned</th><th>Detained</th><th>Cleared</th><th>Bias Risk</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bengal Border North</td><td>145</td><td>89</td><td>12</td><td>44</td><td><span class="badge badge-success">Low</span></td>
+          </tr>
+          <tr>
+            <td>Punjab Border</td><td>67</td><td>34</td><td>4</td><td>29</td><td><span class="badge badge-success">Low</span></td>
+          </tr>
+          <tr>
+            <td>Assam Border</td><td>203</td><td>156</td><td>19</td><td>28</td><td><span class="badge badge-warning">Medium</span></td>
+          </tr>
+          <tr>
+            <td>Mizoram Border</td><td>41</td><td>28</td><td>3</td><td>10</td><td><span class="badge badge-success">Low</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="section">
+      <div class="section-title">📄 DECISION TRAIL EXPLORER (Audit Log)</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Timestamp</th><th>Alert ID</th><th>Indicators Fired</th><th>Human Sign-Off</th><th>Action Taken</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2026-01-04 22:45</td>
+            <td>AUD-2847-92</td>
+            <td>Route anomaly, temporal shift, known contact</td>
+            <td>Officer K. Sharma</td>
+            <td><span class="badge badge-danger">Escalated</span></td>
+          </tr>
+          <tr>
+            <td>2026-01-04 22:30</td>
+            <td>AUD-2843-88</td>
+            <td>Clustering behavior, pattern match</td>
+            <td>Officer R. Verma</td>
+            <td><span class="badge badge-warning">Under Investigation</span></td>
+          </tr>
+          <tr>
+            <td>2026-01-04 21:15</td>
+            <td>AUD-2835-76</td>
+            <td>False positive (low confidence)</td>
+            <td>Officer A. Patel</td>
+            <td><span class="badge badge-success">Cleared</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">⚠ CONFIGURATION & CHANGE GOVERNANCE</div>
+      <div class="card">
+        <h3>RECENT MODEL/PARAMETER CHANGES</h3>
+        <table style="margin-top: 10px;">
+          <thead>
+            <tr><th>Date</th><th>Change</th><th>Approved By</th><th>Rationale</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026-01-02</td>
+              <td>Route anomaly threshold +5%</td>
+              <td>MHA Technical Lead</td>
+              <td>Winter migration pattern adjustment</td>
+            </tr>
+            <tr>
+              <td>2025-12-28</td>
+              <td>Add Assam temporal feature</td>
+              <td>BSF Analytics Director</td>
+              <td>Address night-crossing spike</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="margin-top: 15px; padding: 15px; background: rgba(0,212,255,0.05); border-radius: 4px;">
+        <strong>🔐 Access Control:</strong> All changes logged, reviewed quarterly by independent technical auditors.
+      </div>
+    </div>
+  </div>
+
+  <!-- REFUGEE/CAMP ANALYSIS TAB -->
+  <div id="refugee" class="tab-content">
+    <div class="section">
+      <div class="section-title">🏙 REFUGEE & CAMP-SPECIFIC ANALYSIS</div>
+      <div class="card">
+        <p style="margin-bottom: 15px; color: var(--color-text-muted);">Focuses on pattern-level behavioral anomalies in refugee settlements and camps, not blanket suspicion. Monitors for genuine infiltration risks while protecting vulnerable populations.</p>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🏕 CAMP MOVEMENT ANOMALIES</div>
+      <table>
+        <thead>
+          <tr>
+            <th>Camp/Settlement</th><th>Anomaly Type</th><th>Risk Level</th><th>Indicators</th><th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rohingya Camp (Cox's Bazar)</td>
+            <td>Unusual clustering</td>
+            <td><span class="badge badge-warning">Medium</span></td>
+            <td>3+ individuals, repeated meetings, contact w/ known risk network</td>
+            <td><button onclick="analyzeCluster('rohingya-01')">Analyze</button></td>
+          </tr>
+          <tr>
+            <td>Myanmar National Camp (Mizoram)</td>
+            <td>Rapid exit patterns</td>
+            <td><span class="badge badge-success">Low</span></td>
+            <td>Night departures, no re-entry, route toward Assam</td>
+            <td><button onclick="monitorRoute('myanmar-02')">Monitor</button></td>
+          </tr>
+          <tr>
+            <td>Bengali Settlement (West Bengal)</td>
+            <td>Timing shift</td>
+            <td><span class="badge badge-success">Low</span></td>
+            <td>Earlier morning movement, coordinated travel</td>
+            <td><button onclick="trackTiming('bengali-03')">Track</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="section">
+      <div class="section-title">🔍 INFILTRATION & RADICALIZATION MONITORING</div>
+      <div class="grid">
+        <div class="card">
+          <h3>CAMP RADICALISATION SIGNALS</h3>
+          <div class="stat-value" style="font-size: 24px;">2</div>
+          <div class="stat-label">Documented suspicious networks</div>
+          <div style="margin-top: 10px; font-size: 11px; color: var(--color-text-muted);">🔍 Pattern-based, not demographic-based</div>
+        </div>
+        <div class="card">
+          <h3>CROSS-BORDER COORDINATION</h3>
+          <div class="stat-value" style="font-size: 24px;">1</div>
+          <div class="stat-label">Suspected Pakistan-linked network</div>
+          <div style="margin-top: 10px; font-size: 11px;">Requires deeper investigation</div>
+        </div>
+        <div class="card">
+          <h3>REFUGEE PROTECTION ALERTS</h3>
+          <div class="stat-value" style="font-size: 24px;">0</div>
+          <div class="stat-label">Vulnerable populations at risk</div>
+          <div style="margin-top: 10px; font-size: 11px; color: #2d8c8d;">✓ All cases have adequate safeguards</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-title">⚠ FAIRNESS IN REFUGEE CONTEXTS</div>
+      <div class="card">
+        <p><strong>Principle:</strong> Behavioral & contextual pattern analysis only; explicit exclusion of nationality/ethnicity as primary drivers.</p>
+        <table style="margin-top: 15px;">
+          <thead>
+            <tr><th>Camp</th><th>Population</th><th>% Flagged</th><th>Indicator Justification</th><th>Risk of Bias</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Rohingya Camp (Cox’s Bazar)</td><td>~900K</td><td>0.003%</td><td>Specific network clustering, intel links</td><td><span class="badge badge-success">Low</span></td>
+            </tr>
+            <tr>
+              <td>Myanmar National (Mizoram)</td><td>~45K</td><td>0.002%</td><td>Route patterns matching known smuggle routes</td><td><span class="badge badge-success">Low</span></td>
+            </tr>
+            <tr>
+              <td>Bengali Settlement (W. Bengal)</td><td>~120K</td><td>0.001%</td><td>Temporal shifts + corroborating surveillance</td><td><span class="badge badge-success">Low</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- MODALS -->
+<div id="threatModal" class="modal">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeModal('threatModal')">&times;</span>
+    <h2 id="threatTitle" style="color: var(--color-primary); margin-bottom: 20px;">Threat Details</h2>
+    <div id="threatDetails"></div>
+  </div>
+</div>
+
+<script>
+// TAB SWITCHING
+function switchTab(tabName) {
+  const tabs = document.querySelectorAll('.tab-content');
+  const buttons = document.querySelectorAll('.tab-btn');
+  
+  tabs.forEach(tab => tab.classList.remove('active'));
+  buttons.forEach(btn => btn.classList.remove('active'));
+  
+  document.getElementById(tabName).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// TIME DISPLAY
+function updateTime() {
+  const now = new Date();
+  const hours = String(now.getHours()).padStart(2, '0');
+  const minutes = String(now.getMinutes()).padStart(2, '0');
+  const seconds = String(now.getSeconds()).padStart(2, '0');
+  document.getElementById('timeDisplay').textContent = `${hours}:${minutes}:${seconds} IST`;
+}
+setInterval(updateTime, 1000);
+
+// MODALS
+function openModal(modalId) {
+  const details = {
+    threat1: {
+      title: 'Threat #T1-2847 - Infiltration Group (Bengal Border North)',
+      body: '<strong>Risk Score:</strong> 98%<br><strong>Indicators Fired:</strong><br>• Route anomaly detected (non-standard path)<br>• Temporal shift: 3h earlier than baseline<br>• Known contact with flagged individual<br>• Clustering behavior with 2+ associates<br><br><strong>Decision Log:</strong> AUD-2847-92<br><strong>Human Sign-Off:</strong> Officer K. Sharma<br><strong>Action:</strong> ESCALATED to MHA & BSF Field Command<br><strong>Human-in-Loop:</strong> ✓ All indicators reviewed; escalation approved'
+    },
+    threat2: {
+      title: 'Threat #T1-2843 - Anomalous Movement (Punjab Border)',
+      body: '<strong>Risk Score:</strong> 87%<br><strong>Indicators Fired:</strong><br>• Route pattern matches known smuggle corridor<br>• Repeated association with flagged network<br>• Timing anomaly: coordinated multi-person crossing<br><br><strong>Decision Log:</strong> AUD-2843-88<br><strong>Status:</strong> Under Investigation<br><strong>Human Sign-Off:</strong> Officer R. Verma<br><strong>Next Step:</strong> Field verification + intelligence corroboration'
+    },
+    threat3: {
+      title: 'Threat #T1-2839 - Supply Chain Alert (Assam Border)',
+      body: '<strong>Risk Score:</strong> 72%<br><strong>Indicators Fired:</strong><br>• High-volume irregular cargo movement<br>• Connection to known smuggling operatives<br>• Timing aligned with known trafficking windows<br><br><strong>Decision Log:</strong> AUD-2839-85<br><strong>Status:</strong> Monitoring<br><strong>Fairness Check:</strong> No demographic bias; pattern-based detection<br><strong>Next Step:</strong> Continuous surveillance & pattern update'
+    },
+    threat4: {
+      title: 'Alert #T1-2835 - False Positive (Mizoram Border)',
+      body: '<strong>Initial Score:</strong> 31% (Low Confidence)<br><strong>Reason for Flag:</strong><br>• Temporal shift: early morning departure<br>• Route: toward Assam<br><br><strong>Review Decision:</strong> CLEARED (False Positive)<br><strong>Reviewed By:</strong> Officer A. Patel<br><strong>Reason:</strong> No corroborating indicators; pattern matches routine cross-border commerce<br><strong>Learning:</strong> Temporal shift alone insufficient in this zone during seasonal period'
+    }
+  };
+  
+  const threat = details[modalId] || {};
+  document.getElementById('threatTitle').textContent = threat.title;
+  document.getElementById('threatDetails').innerHTML = threat.body;
+  document.getElementById('threatModal').classList.add('active');
+}
+
+function closeModal(modalId) {
+  document.getElementById(modalId).classList.remove('active');
+}
+
+// ACTION BUTTONS
+function escalate(threatId) {
+  alert(`Threat ${threatId} escalated to MHA & BSF Command Center.\nReal-time alerts dispatched. Human review logged.`);
+}
+
+function investigate(threatId) {
+  alert(`Investigation initiated for ${threatId}.\nField teams notified. Pattern analysis ongoing.`);
+}
+
+function monitor(threatId) {
+  alert(`Continuous monitoring enabled for ${threatId}.\nAuto-alerts configured for pattern changes.`);
+}
+
+function clearFalsePos(threatId) {
+  alert(`${threatId} cleared as false positive.\nLearning logged for model refinement.`);
+}
+
+function analyzeCluster(clusterId) {
+  alert(`Cluster analysis initiated for ${clusterId}.\nBehavioral patterns being mapped...`);
+}
+
+function monitorRoute(routeId) {
+  alert(`Route monitoring activated for ${routeId}.\nExit patterns tracked in real-time.`);
+}
+
+function trackTiming(timingId) {
+  alert(`Temporal tracking enabled for ${timingId}.\nPattern deviations will trigger alerts.`);
+}
+
+// CLOSE MODAL ON BACKGROUND CLICK
+window.onclick = function(event) {
+  const modal = document.getElementById('threatModal');
+  if (event.target === modal) {
+    modal.classList.remove('active');
+  }
+}
+</script>
 </body>
 </html>
