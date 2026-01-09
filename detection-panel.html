@@ -139,7 +139,7 @@
             statusDiv.style.backgroundColor = '#fff3cd';
 
             try {
-                const response = await fetch('http://localhost:5000/anomaly', {
+                const response = await fetch('http://localhost:5001/anomaly', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
