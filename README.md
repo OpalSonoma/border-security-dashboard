@@ -438,8 +438,10 @@ If you use this demo for research, please cite:
 ### Contact
 
 For questions or collaboration on border security AI:
+deeksha.pandey137@gmail.com
+linkedin.com/in/deekshapandey137
 - **GitHub Issues**: [Create an issue](https://github.com/OpalSonoma/border-security-dashboard/issues)
-- **Research Collaboration**: Reach out through Nielsen AI Research Lab
+
 
 ---
 
