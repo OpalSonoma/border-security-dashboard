@@ -443,6 +443,130 @@ linkedin.com/in/deekshapandey137
 - **GitHub Issues**: [Create an issue](https://github.com/OpalSonoma/border-security-dashboard/issues)
 
 
+## 🔐 AI GOVERNANCE FRAMEWORK: INTEGRATED REFERENCE ARCHITECTURE
+
+### Framing & Disclaimer
+
+**This is a research-grade reference implementation demonstrating how high-risk AI systems could be governed, audited, and operationalized in democratic contexts.**
+
+It is **NOT** a live system, **NOT** connected to classified data, and **NOT** an official deployment. This is a non-operational demonstration of AI governance, auditability, and human oversight in high-risk public systems.
+
+### The Four Pillars of Integrated Governance
+
+#### 1. AI Restraint Index: Risk-Driven Posture Shifting
+
+Instead of a single confidence score, the system tracks **four orthogonal risk dimensions**:
+
+- **Uncertainty**: Model disagreement, data drift, confidence gaps
+- **Bias Risk**: Demographic skew, training data imbalance, disparate impact
+- **Civilian Harm Risk**: Proximity to civilians, humanitarian implications, rules-of-engagement violations
+- **Legal Exposure**: Fundamental rights impact, due process concerns, DPDP/AI Act violations
+
+**Composite Index** = weighted average. When **Index > 0.60** (threshold):
+- System automatically enters **RESTRAINT POSTURE**
+- AI recommendations become advisory-only (not prescriptive)
+- Auto-escalation is blocked; human approval required
+- All decisions flagged for independent audit
+
+**Why this works:** Organizations cannot optimize for everything simultaneously. By making risk priorities explicit and index-driven, operators make defensible choices.
+
+#### 2. Legal Bundles: AI Audit Trails as Evidentiary Objects
+
+Every incident generates a **cryptographically sealed, court-ready evidence package** containing:
+
+**Inputs:**
+- Sensor snapshots (timestamp, location, modality)
+- Model versions and configuration at decision time
+- Feature vectors or aggregated sensor statistics
+
+**Model States:**
+- Ensemble model IDs and parameter snapshots
+- Intermediate scores (ensemble agreement, calibration metrics)
+- Feature importance / attribution scores
+
+**Human Decisions:**
+- Complete action log (who, what, when, why)
+- Approval chain (roles, hashed IDs for privacy)
+- Rationales for overrides or escalations
+
+**Alternatives Considered:**
+- All options presented to human decision-maker
+- Why the chosen option was selected
+- Cost/benefit tradeoffs
+
+**Policy Context:**
+- Restraint Index value and threshold at time of decision
+- Active fairness metrics and rules-of-engagement version
+- Any waivers or exceptions granted
+
+**Cryptographic Guarantees:**
+- Hash-chained audit log (append-only, tampering evident)
+- Time-sealed timestamps (synchronized clock)
+- Incident evidence signature (deterministic hash of complete bundle)
+
+**Export Format:** Standardized JSON-LD + human-readable PDF. Designed to be recognized as **prima facie evidence** in courts and oversight bodies.
+
+**Why nations haven't done this:**
+- Legal systems lag technology; few jurisdictions have AI-specific evidence rules
+- Institutions fear traceability (exposes negligence, bias, policy failures)
+- **India is uniquely positioned** due to: active judiciary, RTI culture, DPDP enforcement, public sector transparency norms
+
+#### 3. Decision Context Panels: Legible AI
+
+For every incident, operators see:
+
+- **What triggered this?** → Natural language explanation of sensor anomalies, crossing patterns, or intelligence signals
+- **What data contributed?** → Modalities used, data quality flags, sensor biases noted
+- **What uncertainty exists?** → Model confidence, disagreement metrics, recent drift warnings
+
+**Visible on incident detail drawer, updated in real-time as new data arrives.**
+
+#### 4. Human Action Log: Role-Based, Privacy-Preserving Accountability
+
+**Instead of personal names:** Role + Hashed Internal ID (e.g., "Sector Commander: H-9f3a")
+
+Each entry shows:
+- Timestamp
+- Role and ID (pseudonymized)
+- Action taken
+- Rationale (free text)
+- Fairness checks applied
+
+**Satisfies both:**
+- **Accountability:** Chains of decision are reconstructible for auditors
+- **Privacy:** No personal data exposed to incident reports or external audits
+
+### Integration: Single Dashboard, No Separate Links
+
+**Previous architecture:** Threat detection in separate panel, governance in separate tab, audit logs in separate export.
+
+**New architecture:** All governance features integrated into **main dashboard Operations tab**:
+
+1. **Restraint Index** displayed prominently (color-coded: green <0.3, amber 0.3-0.6, red >0.6)
+2. **Decision Context panels** opened when clicking incident details
+3. **Live Threat Detection** sliders in AI Governance tab (multimodal sensor fusion + real-time fairness calculation)
+4. **Legal Bundle export** one-click from incident drawer
+5. **Human Action Log** visible in governance tab
+
+**Result:** Operators never need to leave the dashboard; governance is integrated, not bolted-on.
+
+### Why This Matters for India
+
+1. **Judiciary:** Higher courts already engage deeply with digital forensics, RTI compliance, constitutional rights. Cryptographic audit trails are familiar.
+2. **RTI Culture:** Public sector transparency norms make logging and documentation expectations high. AI systems fit naturally.
+3. **DPDP Enforcement:** Ministry of Personal Data Protection will demand fairness audits, consent trails, and demonstrable safeguards. This architecture provides them.
+4. **Sovereignty:** Entirely open-source, no external APIs, works offline. Suitable for airgapped national security deployments.
+
+### Recommended Next Steps
+
+1. **Deploy at trial scale:** Test with one border sector, collect feedback from operators
+2. **Build audit team:** Train 3-4 dedicated auditors to review monthly governance reports
+3. **Engage judiciary:** Present governance architecture to Ministry of Defence and Law Ministry
+4. **Iterate on fairness metrics:** Adjust demographic and geographic parity thresholds based on real incident patterns
+5. **Publish findings:** Write policy paper for IJCAI, India AI Summit, or government AI policy forums
+
+---
+
 ---
 
 **Last Updated**: January 9, 2026  
