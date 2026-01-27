@@ -1,1 +1,1000 @@
-<!-- FIXED VERSION 2 --> <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Border Security C4I — India's Integrated Command Center</title><style>*{margin:0;padding:0;box-sizing:border-box}:root{--bg:#0f1419;--surface:#1a1f2e;--primary:#00d4ff;--success:#2d8c8d;--warning:#ff9500;--danger:#ff4444;--text:#e0e0e0;--muted:#b0b0b0}body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}header{background:linear-gradient(135deg,#0a0e17 0%,#1a1f2e 100%);padding:20px;border-bottom:1px solid rgba(0,212,255,0.2)}header>div:first-child{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}.header-text h1{font-size:24px;font-weight:600;margin-bottom:4px}.header-text p{font-size:12px;color:var(--muted)}.about-link{font-size:12px;color:var(--primary);cursor:pointer;text-decoration:underline}.header-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px}#roleSelector{display:flex;gap:10px;align-items:center}#roleSelector select{background:var(--surface);color:var(--primary);border:1px solid var(--primary);padding:8px 12px;border-radius:4px}.role-badge{padding:6px 12px;background:rgba(0,212,255,0.2);color:var(--primary);border-radius:4px;font-size:11px}.sub-header{text-align:right;font-size:12px;color:var(--muted);flex:1}.container{max-width:1800px;margin:0 auto;padding:20px}.tabs{display:flex;gap:15px;margin-bottom:25px;border-bottom:1px solid rgba(255,255,255,0.1);flex-wrap:wrap}.tab-btn{padding:12px 18px;background:none;border:none;color:var(--muted);cursor:pointer;font-size:13px;font-weight:500;border-bottom:3px solid transparent}.tab-btn.active{color:var(--primary);border-bottom-color:var(--primary)}.tab-content{display:none}.tab-content.active{display:block}.section{margin-bottom:30px}.section-title{font-size:15px;font-weight:600;margin-bottom:15px;padding-bottom:10px;border-bottom:1px solid rgba(0,212,255,0.2);color:var(--primary)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;margin-bottom:20px}.card{background:var(--surface);padding:18px;border-radius:6px;border:1px solid rgba(0,212,255,0.15)}.card h3{margin-bottom:12px;font-size:12px;text-transform:uppercase;color:var(--primary)}.stat-value{font-size:28px;font-weight:700;color:var(--primary);margin:8px 0}.stat-label{font-size:11px;color:var(--muted)}.restraint-index{background:linear-gradient(135deg,rgba(0,212,255,0.1) 0%,rgba(255,149,0,0.1) 100%);padding:15px;border-radius:6px;border:1px solid rgba(0,212,255,0.2);margin-bottom:15px}.restraint-score{font-size:22px;font-weight:700;color:var(--primary);margin-bottom:10px}.restraint-breakdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:10px}.restraint-item{text-align:center;background:rgba(0,0,0,0.3);padding:8px;border-radius:4px}.restraint-label{font-size:10px;color:var(--muted);margin-bottom:4px}.restraint-val{font-size:14px;font-weight:600;color:var(--text)}.decision-context{background:rgba(0,212,255,0.05);padding:12px;border-radius:4px;margin-bottom:12px;border-left:3px solid var(--primary);font-size:11px}.decision-label{font-weight:600;color:var(--primary);margin-bottom:6px}.human-action-log{background:rgba(45,200,150,0.08);padding:12px;border-radius:4px;margin-bottom:10px;border-left:3px solid var(--success);font-size:11px}.legal-bundle{background:rgba(150,100,200,0.08);padding:12px;border-radius:4px;margin-bottom:12px;border-left:3px solid #9664c8}.playbook-bar{background:rgba(0,212,255,0.08);padding:15px;border-radius:6px;border:1px solid rgba(0,212,255,0.2);margin-bottom:20px;display:flex;gap:10px;flex-wrap:wrap}.playbook-btn{padding:8px 14px;background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.4);color:var(--primary);cursor:pointer;border-radius:4px;font-size:11px;font-weight:600}.playbook-btn:hover{background:var(--primary);color:var(--bg)}.hotspot-strip{background:rgba(255,149,0,0.08);padding:12px;border-left:3px solid var(--warning);border-radius:4px;margin-bottom:15px;font-size:12px}.hotspot-item{padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05)}.risk-register{background:var(--surface);padding:15px;border-radius:6px;border-left:4px solid;margin-bottom:15px;font-size:12px}.risk-register.critical{border-left-color:var(--danger)}.risk-register.high{border-left-color:var(--warning)}.risk-register.medium{border-left-color:#7a8aff}.risk-title{font-weight:600;margin-bottom:4px}.badge{display:inline-block;padding:4px 10px;border-radius:3px;font-size:10px;font-weight:600;text-transform:uppercase;margin-right:5px;margin-bottom:5px}.badge-drone{background:rgba(255,68,68,0.3);color:#ff4444}.badge-anomaly{background:rgba(0,212,255,0.3);color:var(--primary)}.badge-network{background:rgba(150,100,200,0.3);color:#9664c8}.badge-pattern{background:rgba(45,200,150,0.3);color:#2dc896}.badge-critical{background:rgba(255,68,68,0.4);color:#ff4444}.badge-high{background:rgba(255,149,0,0.4);color:var(--warning)}.table{width:100%;border-collapse:collapse;font-size:12px;margin-top:12px}th{background:rgba(0,212,255,0.1);padding:10px;text-align:left;border-bottom:1px solid rgba(0,212,255,0.2);font-weight:600}td{padding:10px;border-bottom:1px solid rgba(255,255,255,0.05)}tr:hover{background:rgba(0,212,255,0.05)}.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000;align-items:center;justify-content:center;overflow-y:auto}.modal.active{display:flex}.modal-content{background:var(--surface);padding:30px;border-radius:8px;max-width:900px;max-height:90vh;overflow-y:auto;border:1px solid var(--primary);margin:auto}.export-btn{padding:10px 16px;background:var(--primary);color:var(--bg);border:none;border-radius:4px;cursor:pointer;font-weight:600;margin-right:8px;margin-bottom:8px}.threat-panel{background:linear-gradient(135deg,rgba(255,68,68,0.08) 0%,rgba(255,149,0,0.08) 100%);padding:15px;border-radius:6px;border:1px solid rgba(255,68,68,0.3);margin-bottom:15px}.threat-slider{margin:12px 0}.threat-slider label{display:block;font-size:11px;color:var(--muted);margin-bottom:4px}.threat-slider input{width:100%;cursor:pointer}.detect-btn{padding:10px 16px;background:var(--danger);color:white;border:none;border-radius:4px;cursor:pointer;font-weight:600}.threat-result{background:rgba(0,212,255,0.05);padding:12px;border-radius:4px;margin-top:10px;border-left:3px solid var(--warning);font-size:11px}.humanitarian-section{background:linear-gradient(135deg,rgba(45,200,150,0.08) 0%,rgba(0,212,255,0.08) 100%);padding:15px;border-radius:6px;border:1px solid rgba(45,200,150,0.2);margin-bottom:15px}.close-modal{cursor:pointer;font-size:20px;margin-left:auto;color:var(--muted)}.close-modal:hover{color:var(--primary)}</style></head><body><header><div><div class="header-text"><h1>⚡ BORDER SECURITY C4I COMMAND CENTER — Reference Architecture</h1><p>Demonstrating accountable, auditable AI for high-risk national security contexts</p></div><div style="text-align:right"><span class="about-link" onclick="openAboutModal()">ℹ️ About this system</span></div></div><div class="header-bottom"><div id="roleSelector"><label style="font-size:11px;color:var(--muted)">ROLE:</label><select id="roleSelect" onchange="switchRole()"><option value="operations">OPERATIONS COMMANDER</option><option value="policy">CIVIL SERVANT/POLICY</option><option value="governance">AI GOVERNANCE OFFICER</option><option value="humanitarian">HUMANITARIAN COORDINATOR</option></select><span class="role-badge" id="roleBadge">OPERATIONS</span></div><div id="timeDisplay" style="font-size:12px;color:var(--primary);margin-left:auto">00:00:00 IST</div></div></header><div class="container"><div class="tabs" id="tabBar"><button class="tab-btn active" onclick="switchTab('operations')">OPERATIONS</button><button class="tab-btn" onclick="switchTab('oversight')">OVERSIGHT & AUDIT</button><button class="tab-btn" onclick="switchTab('supply')">SUPPLY CHAIN</button><button class="tab-btn" onclick="switchTab('climate')">CLIMATE INTEL</button><button class="tab-btn" onclick="switchTab('humanitarian')">HUMANITARIAN</button><button class="tab-btn" onclick="switchTab('governance')">AI GOVERNANCE</button></div><div id="operations" class="tab-content active"><div class="section"><div class="playbook-bar"><strong style="color:var(--primary);margin-right:15px">MISSION PLAYBOOK:</strong><button class="playbook-btn" onclick="playbook('Seal Vulnerable Stretch')">Seal Vulnerable Stretch</button><button class="playbook-btn" onclick="playbook('Pre-emptive Patrol Surge')">Pre-emptive Patrol Surge</button><button class="playbook-btn" onclick="playbook('Request Air Assets')">Request Air Assets</button><button class="playbook-btn" onclick="playbook('Emergency Alert to MHA')">Emergency Alert to MHA</button></div></div><div class="hotspot-strip"><strong>TODAY'S ANOMALIES VS USUAL</strong><div class="hotspot-item" style="margin-top:8px"><strong>⚠ EMERGING HOTSPOT</strong>: Sector 7B showing +180% activity vs 30-day avg (thermal + acoustic agree)</div><div class="hotspot-item"><strong>✔ NORMAL</strong>: Bengal North patrol route (baseline activity)</div><div class="hotspot-item"><strong>⚠ CONCERN</strong>: Mizoram settlement showing unusual cluster patterns (48 people vs usual 12)</div><div class="hotspot-item"><strong>⚠ SUPPLY CHAIN SIGNAL</strong>: Fentanyl precursor shortage detected - expect 40% fewer infiltration attempts Jan 15-30</div></div><div class="section-title">🎯 COMMANDER'S STATUS BOARD</div><div class="grid"><div class="card"><h3>ACTIVE THREATS (LIVE)</h3><div class="stat-value">8</div><div class="stat-label">5 ESCALATED, 3 IN REVIEW</div></div><div class="card"><h3>CRITICAL ALERTS</h3><div class="stat-value">2</div><div class="stat-label">Drone swarm + Network cluster</div></div><div class="card"><h3>MISSION READINESS</h3><div class="stat-value">94%</div><div class="stat-label">All units deployed</div></div><div class="card"><h3>AIRSPACE STATUS</h3><div class="stat-value">ACTIVE</div><div class="stat-label">2 drones + 1 heli on patrol</div></div></div><div class="section-title">15-CAPABILITY INCIDENT QUEUE</div><table class="table"><thead><tr><th>ID</th><th>TYPE</th><th>ZONE</th><th>RISK</th><th>MODULE SOURCE</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody><tr><td>T-2847</td><td><span class="badge badge-drone">DRONE SWARM</span></td><td>Bengal</td><td><span class="badge badge-critical">CRITICAL</span></td><td>YOLOv8 + Kalman</td><td>ESCALATED</td><td><button onclick="viewIncident(2847)" style="padding:4px 8px;font-size:10px;background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.4);color:var(--primary);border-radius:4px;cursor:pointer">Details</button></td></tr><tr><td>T-2843</td><td><span class="badge badge-anomaly">MULTIMODAL</span></td><td>Punjab</td><td><span class="badge badge-high">HIGH</span></td><td>LSTM</td><td>IN REVIEW</td><td><button onclick="viewIncident(2843)" style="padding:4px 8px;font-size:10px;background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.4);color:var(--primary);border-radius:4px;cursor:pointer">Details</button></td></tr><tr><td>T-2841</td><td><span class="badge badge-network">ENTITY NETWORK</span></td><td>Assam</td><td><span class="badge badge-high">HIGH</span></td><td>Graph Neural Net</td><td>ESCALATED</td><td><button onclick="viewIncident(2841)" style="padding:4px 8px;font-size:10px;background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.4);color:var(--primary);border-radius:4px;cursor:pointer">Details</button></td></tr><tr><td>T-2839</td><td><span class="badge badge-pattern">SPATIOTEMPORAL</span></td><td>Bengal</td><td><span class="badge badge-high">HIGH</span></td><td>ST-DBSCAN</td><td>OPEN</td><td><button onclick="viewIncident(2839)" style="padding:4px 8px;font-size:10px;background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.4);color:var(--primary);border-radius:4px;cursor:pointer">Details</button></td></tr></tbody></table></div></div><div id="oversight" class="tab-content"><div class="section-title">⚠️ FAIRNESS AUDIT DASHBOARD (DPDP COMPLIANCE)</div><div class="grid"><div class="card"><h3>FAIRNESS INDEX</h3><div class="stat-value">92.3%</div><div class="stat-label">✓ No demographic bias detected</div></div><div class="card"><h3>DEMOGRAPHIC PARITY</h3><div class="stat-value">0.91</div><div class="stat-label">FPR equal across groups</div></div><div class="card"><h3>AUDIT COMPLETENESS</h3><div class="stat-value">100%</div><div class="stat-label">All decisions logged</div></div><div class="card"><h3>DPDP INCIDENTS</h3><div class="stat-value">0</div><div class="stat-label">This month (breach-free)</div></div></div><div class="section-title">📊 ROOT CAUSE ANALYSIS</div><div class="grid"><div class="card"><h3>TOP FACTOR: MONSOON</h3><div class="stat-value">+35%</div><div class="stat-label">Infiltration risk Sep-Oct</div></div><div class="card"><h3>PATROL VISIBILITY</h3><div class="stat-value">40%</div><div class="stat-label">Affects detected incidents</div></div><div class="card"><h3>SUPPLY CHAIN</h3><div class="stat-value">90-day</div><div class="stat-label">Precursor shortage window</div></div></div><div class="section-title">📊 INCIDENT AUDIT FILE GENERATOR</div><button class="export-btn" onclick="generateAuditPDF()">Generate Audit PDF</button><button class="export-btn" onclick="generateAuditJSON()">Export Audit JSON</button></div><div id="supply" class="tab-content"><div class="section-title">📎 SUPPLY CHAIN DISRUPTION FORECAST (90-DAY OUTLOOK)</div><div class="grid"><div class="card"><h3>FENTANYL PRECURSORS</h3><div class="stat-value" style="color:#ff9500">DISRUPTED</div><div class="stat-label">Jan 15-30 window<br/>Infiltration impact: -40%</div></div><div class="card"><h3>EXPLOSIVE COMPONENTS</h3><div class="stat-value" style="color:var(--success)">NORMAL</div><div class="stat-label">Confidence: 85%</div></div><div class="card"><h3>WEAPONRY</h3><div class="stat-value" style="color:var(--warning)">CONSTRAINED</div><div class="stat-label">90-day shortage</div></div><div class="card"><h3>DARK WEB INTEL</h3><div class="stat-value">12 sources</div><div class="stat-label">Last update: 2h ago</div></div></div></div><div id="climate" class="tab-content"><div class="section-title">🌧️ CLIMATE-ADAPTIVE BORDER THREAT TIMELINE</div><div class="grid"><div class="card"><h3>JAN-FEB (DRY)</h3><div class="stat-value">BASELINE</div><div class="stat-label">Normal patrol effectiveness</div></div><div class="card"><h3>MAR-MAY (HOT)</h3><div class="stat-value">+15%</div><div class="stat-label">Heat stress increases attempts</div></div><div class="card"><h3>JUN-SEP (MONSOON)</h3><div class="stat-value">+35%</div><div class="stat-label">Poor visibility +40%</div></div><div class="card"><h3>OCT-NOV (COOL)</h3><div class="stat-value">+20%</div><div class="stat-label">Optimal infiltration window</div></div></div><div style="background:rgba(0,212,255,0.08);padding:15px;border-radius:6px"><strong>NEXT 90 DAYS:</strong> ELEVATED (Monsoon approaching). Current score: 18/25. Recommended: Deploy thermal IR, adjust shift timing to 2-4am.</div></div><div id="governance" class="tab-content"><div class="section-title">📄 AI RESTRAINT INDEX & DECISION GOVERNANCE</div><div class="restraint-index"><div class="restraint-score">Overall Restraint Index: 0.73 (HIGH)</div><p>When index > 0.60, system enters restraint posture: fewer recommendations, advisory-only mode, block auto-escalation</p><div class="restraint-breakdown"><div class="restraint-item"><div class="restraint-label">Uncertainty</div><div class="restraint-val">0.22</div></div><div class="restraint-item"><div class="restraint-label">Bias Risk</div><div class="restraint-val">0.18</div></div><div class="restraint-item"><div class="restraint-label">Civilian Harm</div><div class="restraint-val">0.40</div></div><div class="restraint-item"><div class="restraint-label">Legal Exposure</div><div class="restraint-val">0.23</div></div></div></div><div style="font-size:11px;color:var(--muted);margin-bottom:15px"><strong>Action:</strong> System state = AI ADVISORY ONLY. No kinetic recommendations without human override. All decisions logged and marked for review.</div></div><div class="section-title">📂 HIGH-RISK AI RISK REGISTER</div><div class="risk-register critical"><div class="risk-title">🔴 CRITICAL: Data Drift in Sensor Fusion (Monsoon)</div><p style="font-size:11px;margin:5px 0">Thermal camera performance degrades 15% in heavy rain. Mitigated by: manual review + satellite backup. Monitor: Monthly calibration.</p></div><div class="risk-register high"><div class="risk-title">🟡 HIGH: Fairness Shift in Border Zone X</div><p style="font-size:11px;margin:5px 0">FPR increased 2.1% for demographic group (confidence 0.71). Action: Threshold adjustment + retraining (ETA: 1 week).</p></div><div class="risk-register high"><div class="risk-title">🟡 HIGH: Model Performance Degradation</div><p style="font-size:11px;margin:5px 0">Entity linking accuracy dropped 3% in Assam sector. Cause: Training data skew. Fix: Retrain with zone-balanced data (ETA: 1 week).</p></div><div class="risk-register medium"><div class="risk-title">🔵 MEDIUM: Unexplained Decision</div><p style="font-size:11px;margin:5px 0">1 incident escalated without clear sensor evidence. Investigation: Under review. Accountability: Logged + flagged for auditor.</p></div></div></div><div id="humanitarian" class="tab-content"><div class="section-title">🌿 CIVILIAN MOVEMENT & HUMANITARIAN RISK</div><div class="humanitarian-section"><div style="font-size:10px;color:var(--success);text-transform:uppercase;margin-bottom:8px">⚡ DUAL-USE VALUE</div><div style="font-size:12px;line-height:1.5;color:var(--text)">This analysis enables: (1) Early humanitarian crisis warning (floods, displacement) for resource pre-positioning, and (2) Smart borders for proportionate enforcement. Frame: civilian mobility monitoring.</div></div><div class="grid"><div class="card" style="border:1px solid rgba(45,200,150,0.3)"><h3>CROWD ANOMALY (Thermal)</h3><div class="stat-value">4,200</div><div class="stat-label">People detected Cox's Bazar (vs 800 baseline)</div></div><div class="card" style="border:1px solid rgba(45,200,150,0.3)"><h3>SURGE PROBABILITY (48H)</h3><div class="stat-value">88%</div><div class="stat-label">Mass civilian crossing likelihood</div></div><div class="card" style="border:1px solid rgba(45,200,150,0.3)"><h3>HUMANITARIAN NEEDS</h3><div class="stat-value">PREP</div><div class="stat-label">Medical, water, shelter for 3K</div></div><div class="card" style="border:1px solid rgba(45,200,150,0.3)"><h3>EARLY ALERT</h3><div class="stat-value">24-48H</div><div class="stat-label">Warning to State/NGOs</div></div></div></div><div id="governance" class="tab-content"><div class="section-title">📄 AI RESTRAINT INDEX & DECISION GOVERNANCE</div><div class="restraint-index"><div class="restraint-score">Overall Restraint Index: 0.73 (HIGH)</div><div style="font-size:12px;color:var(--text);margin-bottom:10px">When index > 0.60, system enters restraint posture: fewer recommendations, advisory-only mode, block auto-escalation</div><div class="restraint-breakdown"><div class="restraint-item"><div class="restraint-label">Uncertainty</div><div class="restraint-val">0.22</div></div><div class="restraint-item"><div class="restraint-label">Bias Risk</div><div class="restraint-val">0.18</div></div><div class="restraint-item"><div class="restraint-label">Civilian Harm</div><div class="restraint-val">0.40</div></div><div class="restraint-item"><div class="restraint-label">Legal Exposure</div><div class="restraint-val">0.23</div></div></div><div style="margin-top:12px;font-size:11px;color:var(--muted)"><strong>Action:</strong> System state = AI ADVISORY ONLY. No kinetic recommendations without human override. All decisions logged and marked for review.</div></div><div class="section-title">🔍 INCIDENT T-2847: DECISION CONTEXT PANEL</div><div class="decision-context"><div class="decision-label">🔎 What triggered this?</div>Thermal + acoustic anomaly >3x 30-day baseline within 2km of vulnerable stretch. Cross-checked with satellite imagery (5 people detected vs thermal showing 3 heat signatures). Fusion conflict flagged but LiDAR confirms object count.</div><div class="decision-context" style="margin-top:10px"><div class="decision-label">What data contributed?</div>Modalities: Thermal, Acoustic, Satellite, Patrol logs, OSINT. Data quality: Thermal sensor has 15% humidity bias in monsoon season. Acoustic equipment just calibrated. Satellite 12h old.</div><div class="decision-context" style="margin-top:10px"><div class="decision-label">What uncertainty exists?</div><strong>Model confidence: MEDIUM (0.71)</strong> Two models disagree on classification. Recent data drift detected in thermal feed (accuracy down 3% this week). Recommendation: Treat as exploratory, not definitive.</div></div><div class="section-title">📋 RESTRAINT & CONFIDENCE INDICATOR</div><div class="card"><h3>SYSTEM STATE</h3><div class="stat-value" style="color:#ff9500;font-size:18px">AI ADVISORY ONLY</div><div style="font-size:11px;color:var(--muted);margin-top:8px"><strong>Reason:</strong> Restraint Index 0.73 >threshold (0.60). Model confidence MEDIUM. Data conflict: satellite/thermal mismatch. Civilian presence unconfirmed (high harm risk 0.40).</div></div><div class="card" style="margin-top:15px"><h3>CONFIDENCE LEVEL: MEDIUM (0.71)</h3><div style="font-size:11px;color:var(--muted);margin-top:8px"><strong>🔠 Bias Risk:</strong> ELEVATED - Recent incidents cluster disproportionately in Sector 3 where training data is sparse (only 8 samples vs 200 in Sector 1). Recommendation: Apply geographic fairness correction.<br/><strong>⚠️ Data Conflict:</strong> Satellite and ground radar disagree on object count (5 vs 3). Human verification strongly recommended before escalation.</div></div><div class="section-title">📚 Human Action Log</div><div class="human-action-log"><strong>Human Approvals:</strong> 3 | <strong>Roles:</strong> Sector Commander, Ops Analyst, Duty Officer | <strong>IDs:</strong> H-9f3a, H-2b17, H-77c1 (internal hashes)<br/><br/><strong>2026-01-05 20:15</strong> (H-9f3a, Sector Commander): Detected threat. Decision: Hold for verification. Reason: Civilian presence unclear, thermal/satellite conflict.<br/><strong>2026-01-05 21:30</strong> (H-2b17, Ops Analyst): Reviewed data fusion. Decision: Request aerial confirmation via drone. Rationale: Reduce false positive risk (FPR currently 5.2%).<br/><strong>2026-01-05 22:45</strong> (H-77c1, Duty Officer): Approved aerial survey. Decision: Deploy drone, establish no-kill zone until confirmed threat. Fairness check: Applied geographic correction to bias risk.</div><div class="section-title">📄 Generate Legal Bundle</div><div class="legal-bundle"><strong>Evidence View:</strong> This export is designed as a standardized, cryptographically sealed record of Incident T-2847 for courts, auditors, and oversight institutions.<br/><div style="margin-top:10px;font-size:11px;color:var(--muted)"><strong>Includes:</strong><br/>✓ Inputs: Sensor snapshots (timestamp, locations), model versions, configuration parameters<br/>✓ Model states: 3 ensemble models, parameter snapshots, intermediate scores<br/>✓ Human decisions: Action log, approvals count (3), roles, hashed IDs, rationales<br/>✓ Alternatives considered: Option A (Escalate with drone strike) vs Option B (Non-kinetic surveillance) [CHOSEN]<br/>✓ Policy context: Restraint Index 0.73, active fairness thresholds, rules-of-engagement version 2.1<br/>✓ Cryptographic guarantees: Hash-chained audit log (tampering evident), time-sealed timestamps, evidence signature</div></div><button class="export-btn" onclick="generateLegalBundle()">Generate Legal Bundle (PDF+JSON)</button><button class="export-btn" onclick="previewEvidence()">Preview Court-Ready Evidence</button><div class="section-title">📂 HIGH-RISK AI RISK REGISTER</div><div class="risk-register critical"><div class="risk-title">🔴 CRITICAL: Data Drift in Sensor Fusion (Monsoon)</div><div style="font-size:11px;color:var(--muted);margin-top:4px">Thermal camera performance degrades 15% in heavy rain. Mitigated by: manual review + satellite backup. Monitor: Monthly calibration.</div></div><div class="risk-register high"><div class="risk-title">🟡 HIGH: Fairness Shift in Border Zone X</div><div style="font-size:11px;color:var(--muted);margin-top:4px">FPR increased 2.1% for demographic group (confidence 0.71). Action: Threshold adjustment + retraining (ETA: 1 week).</div></div><div class="risk-register high"><div class="risk-title">🟡 HIGH: Model Performance Degradation</div><div style="font-size:11px;color:var(--muted);margin-top:4px">Entity linking accuracy dropped 3% in Assam sector. Cause: Training data skew. Fix: Retrain with zone-balanced data (ETA: 1 week).</div></div><div class="risk-register medium"><div class="risk-title">🔵 MEDIUM: Unexplained Decision</div><div style="font-size:11px;color:var(--muted);margin-top:4px">1 incident escalated without clear sensor evidence. Investigation: Under review. Accountability: Logged + flagged for auditor.</div></div><div class="section-title">🔍 Live Threat Detection Panel</div><div class="threat-panel"><div style="font-size:11px;margin-bottom:12px;color:var(--muted)"><strong>Simulated multimodal sensor inputs:</strong> Adjust sliders to simulate real-time threat scoring. Restraint Index updates dynamically.</div><div class="threat-slider"><label>Satellite Detections: <span id="satVal">0</span></label><input type="range" id="satSlider" min="0" max="10" value="0" oninput="updateThreat()"/></div><div class="threat-slider"><label>Thermal Anomalies: <span id="thermalVal">0</span></label><input type="range" id="thermalSlider" min="0" max="10" value="0" oninput="updateThreat()"/></div><div class="threat-slider"><label>Acoustic Intensity (dB): <span id="acousticVal">0</span></label><input type="range" id="acousticSlider" min="0" max="120" value="0" oninput="updateThreat()"/></div><button class="detect-btn" onclick="detectThreat()">Run Threat Detection</button><div id="threatResult" class="threat-result" style="display:none"><div><strong>Anomaly Score: <span id="anomalyScore">0.00</span></strong></div><div style="margin-top:6px;font-size:10px"><strong>Status:</strong> <span id="threatStatus">Normal</span></div><div style="margin-top:6px;font-size:10px"><strong>Fairness Parity:</strong> <span id="fairnessParity">0.92</span></div><div style="margin-top:6px;font-size:10px"><strong>Audit ID:</strong> INC-<span id="auditID">1767935543</span></div><div style="margin-top:6px;font-size:10px;color:var(--muted)"><strong>AI Restraint State:</strong> <span id="restraintState">NORMAL</span></div></div></div></div></div><div id="incidentModal" class="modal"><div class="modal-content"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px"><h2 style="color:var(--primary);margin:0">Incident Details: T-<span id="incID">2847</span></h2><span class="close-modal" onclick="closeModal()">×</span></div><p id="incidentText"></p><button onclick="closeModal()" style="margin-top:15px;background:var(--muted);color:var(--bg);padding:10px 16px;border:none;border-radius:4px;cursor:pointer">Close</button></div></div><div id="aboutModal" class="modal"><div class="modal-content"><div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px"><h2 style="color:var(--primary);margin:0">About This System</h2><span class="close-modal" onclick="closeAboutModal()">×</span></div><div style="font-size:12px;line-height:1.7;color:var(--text)"><p style="margin-bottom:10px"><strong>RESEARCH-GRADE REFERENCE IMPLEMENTATION</strong><br/>This demonstrates how high-risk AI systems could be governed, audited, and operationalized in democratic contexts.</p><p style="margin-bottom:10px"><strong>NOT:</strong> a live system, NOT connected to classified data, NOT an official deployment.</p><p style="margin-bottom:10px"><strong>CORE INNOVATIONS:</strong></p><ul style="margin-left:20px"><li><strong>AI Restraint Index:</strong> Single score (uncertainty + bias + harm + legal exposure). When >0.60: advisory-only mode, block escalation.</li><li><strong>Legal Bundles:</strong> Cryptographically sealed evidence (inputs, models, humans, alternatives, policy). Court-ready.</li><li><strong>Decision Context:</strong> Trigger source, data provenance, uncertainty all visible.</li><li><strong>Restraint Indicator:</strong> Real-time system state, confidence, bias warnings, conflicts.</li><li><strong>Action Logs:</strong> Role-based approval chains, hashed IDs (privacy + accountability).</li><li><strong>Live Threat Detection:</strong> Multimodal fusion + fairness parity calculation, integrated in-dashboard.</li></ul><p style="margin-bottom:10px"><strong>WHY INDIA CAN LEAD:</strong> Active judiciary + RTI culture + DPDP enforcement needs = perfect conditions.</p></div><button onclick="closeAboutModal()" style="margin-top:15px;background:var(--primary);color:var(--bg);padding:10px 16px;border:none;border-radius:4px;cursor:pointer">Close</button></div></div><script>function switchTab(t){document.querySelectorAll('.tab-content').forEach(e=>e.classList.remove('active'));document.querySelectorAll('.tab-btn').forEach(e=>e.classList.remove('active'));document.getElementById(t).classList.add('active');event.target.classList.add('active');}function switchRole(){const r=document.getElementById('roleSelect').value;document.getElementById('roleBadge').textContent=r.toUpperCase().replace(/_/g,' ');}function updateTime(){const n=new Date();const h=String(n.getHours()).padStart(2,'0');const m=String(n.getMinutes()).padStart(2,'0');const s=String(n.getSeconds()).padStart(2,'0');document.getElementById('timeDisplay').textContent=`${h}:${m}:${s} IST`;}function viewIncident(id){const modal=document.getElementById('incidentModal');document.getElementById('incID').textContent=id;document.getElementById('incidentText').innerHTML=`<strong>Incident T-${id}</strong><p style="margin-top:10px;font-size:11px">Anomaly: 0.89 | Risk: HIGH | Confidence: 0.87<br/>Restraint Index: 0.73 (ADVISORY-ONLY)<br/>Timeline: 20:15-23:00 IST<br/>Approvals: 3 (Commander, Analyst, Officer)<br/>Fairness: Parity 0.91, Equalized Odds 0.88</p>`;modal.classList.add('active');}function closeModal(){document.getElementById('incidentModal').classList.remove('active');}function openAboutModal(){document.getElementById('aboutModal').classList.add('active');}function closeAboutModal(){document.getElementById('aboutModal').classList.remove('active');}function playbook(a){alert(`${a}\n\nMission playbook executed.`);}function updateThreat(){document.getElementById('satVal').textContent=document.getElementById('satSlider').value;document.getElementById('thermalVal').textContent=document.getElementById('thermalSlider').value;document.getElementById('acousticVal').textContent=document.getElementById('acousticSlider').value;}function detectThreat(){const s=parseInt(document.getElementById('satSlider').value)/10;const t=parseInt(document.getElementById('thermalSlider').value)/10;const a=parseInt(document.getElementById('acousticSlider').value)/120;const score=(s*0.3+t*0.4+a*0.3).toFixed(2);const status=score>0.5?'THREAT':'Normal';const restraint=score>0.7?'RESTRAINT':'NORMAL';document.getElementById('anomalyScore').textContent=score;document.getElementById('threatStatus').textContent=status;document.getElementById('fairnessParity').textContent=(0.92-Math.random()*0.1).toFixed(2);document.getElementById('restraintState').textContent=restraint;document.getElementById('threatResult').style.display='block';}function generateLegalBundle(){alert('Legal Bundle:\n\nFile: T-2847_Evidence.pdf\n✓ Model card\n✓ Decision log\n✓ Approvals (hashed)\n✓ Alternatives\n✓ Fairness metrics\n✓ Cryptographic seal');}function generateAuditPDF(){alert('Audit PDF\n\n- Incident T-2847\n- Fairness: PASS\n- Approvals: 3\n- Hash: b7a3c9d2e1f8');}function generateAuditJSON(){alert('{"incident":"T-2847","restraint":0.73,"fairness":0.91,"sealed":true}');}function previewEvidence(){alert('Evidence (Court-Ready):\n\nINCIDENT: T-2847\nINPUTS: Thermal, Acoustic, Satellite\nMODELS: 3 ensemble\nAPPROVALS: 3 (hashed IDs)\nALTERNATIVES: 2 considered\nRESTRAINT: 0.73 (HIGH)\nFAIRNESS: 0.91 parity\nSTATUS: Audit-ready, sealed');}setInterval(updateTime,1000);updateTime();</script></body></html>
+<!-- FIXED VERSION 2 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Border Security C4I — India's Integrated Command Center</title>
+	<style>
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box
+	}
+	
+	:root {
+		--bg: #0f1419;
+		--surface: #1a1f2e;
+		--primary: #00d4ff;
+		--success: #2d8c8d;
+		--warning: #ff9500;
+		--danger: #ff4444;
+		--text: #e0e0e0;
+		--muted: #b0b0b0
+	}
+	
+	body {
+		font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+		background: var(--bg);
+		color: var(--text);
+		line-height: 1.6
+	}
+	
+	header {
+		background: linear-gradient(135deg, #0a0e17 0%, #1a1f2e 100%);
+		padding: 20px;
+		border-bottom: 1px solid rgba(0, 212, 255, 0.2)
+	}
+	
+	header>div:first-child {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 15px
+	}
+	
+	.header-text h1 {
+		font-size: 24px;
+		font-weight: 600;
+		margin-bottom: 4px
+	}
+	
+	.header-text p {
+		font-size: 12px;
+		color: var(--muted)
+	}
+	
+	.about-link {
+		font-size: 12px;
+		color: var(--primary);
+		cursor: pointer;
+		text-decoration: underline
+	}
+	
+	.header-bottom {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 20px
+	}
+	
+	#roleSelector {
+		display: flex;
+		gap: 10px;
+		align-items: center
+	}
+	
+	#roleSelector select {
+		background: var(--surface);
+		color: var(--primary);
+		border: 1px solid var(--primary);
+		padding: 8px 12px;
+		border-radius: 4px
+	}
+	
+	.role-badge {
+		padding: 6px 12px;
+		background: rgba(0, 212, 255, 0.2);
+		color: var(--primary);
+		border-radius: 4px;
+		font-size: 11px
+	}
+	
+	.sub-header {
+		text-align: right;
+		font-size: 12px;
+		color: var(--muted);
+		flex: 1
+	}
+	
+	.container {
+		max-width: 1800px;
+		margin: 0 auto;
+		padding: 20px
+	}
+	
+	.tabs {
+		display: flex;
+		gap: 15px;
+		margin-bottom: 25px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+		flex-wrap: wrap
+	}
+	
+	.tab-btn {
+		padding: 12px 18px;
+		background: none;
+		border: none;
+		color: var(--muted);
+		cursor: pointer;
+		font-size: 13px;
+		font-weight: 500;
+		border-bottom: 3px solid transparent
+	}
+	
+	.tab-btn.active {
+		color: var(--primary);
+		border-bottom-color: var(--primary)
+	}
+	
+	.tab-content {
+		display: none
+	}
+	
+	.tab-content.active {
+		display: block
+	}
+	
+	.section {
+		margin-bottom: 30px
+	}
+	
+	.section-title {
+		font-size: 15px;
+		font-weight: 600;
+		margin-bottom: 15px;
+		padding-bottom: 10px;
+		border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+		color: var(--primary)
+	}
+	
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 18px;
+		margin-bottom: 20px
+	}
+	
+	.card {
+		background: var(--surface);
+		padding: 18px;
+		border-radius: 6px;
+		border: 1px solid rgba(0, 212, 255, 0.15)
+	}
+	
+	.card h3 {
+		margin-bottom: 12px;
+		font-size: 12px;
+		text-transform: uppercase;
+		color: var(--primary)
+	}
+	
+	.stat-value {
+		font-size: 28px;
+		font-weight: 700;
+		color: var(--primary);
+		margin: 8px 0
+	}
+	
+	.stat-label {
+		font-size: 11px;
+		color: var(--muted)
+	}
+	
+	.restraint-index {
+		background: linear-gradient(135deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 149, 0, 0.1) 100%);
+		padding: 15px;
+		border-radius: 6px;
+		border: 1px solid rgba(0, 212, 255, 0.2);
+		margin-bottom: 15px
+	}
+	
+	.restraint-score {
+		font-size: 22px;
+		font-weight: 700;
+		color: var(--primary);
+		margin-bottom: 10px
+	}
+	
+	.restraint-breakdown {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 8px;
+		margin-top: 10px
+	}
+	
+	.restraint-item {
+		text-align: center;
+		background: rgba(0, 0, 0, 0.3);
+		padding: 8px;
+		border-radius: 4px
+	}
+	
+	.restraint-label {
+		font-size: 10px;
+		color: var(--muted);
+		margin-bottom: 4px
+	}
+	
+	.restraint-val {
+		font-size: 14px;
+		font-weight: 600;
+		color: var(--text)
+	}
+	
+	.decision-context {
+		background: rgba(0, 212, 255, 0.05);
+		padding: 12px;
+		border-radius: 4px;
+		margin-bottom: 12px;
+		border-left: 3px solid var(--primary);
+		font-size: 11px
+	}
+	
+	.decision-label {
+		font-weight: 600;
+		color: var(--primary);
+		margin-bottom: 6px
+	}
+	
+	.human-action-log {
+		background: rgba(45, 200, 150, 0.08);
+		padding: 12px;
+		border-radius: 4px;
+		margin-bottom: 10px;
+		border-left: 3px solid var(--success);
+		font-size: 11px
+	}
+	
+	.legal-bundle {
+		background: rgba(150, 100, 200, 0.08);
+		padding: 12px;
+		border-radius: 4px;
+		margin-bottom: 12px;
+		border-left: 3px solid #9664c8
+	}
+	
+	.playbook-bar {
+		background: rgba(0, 212, 255, 0.08);
+		padding: 15px;
+		border-radius: 6px;
+		border: 1px solid rgba(0, 212, 255, 0.2);
+		margin-bottom: 20px;
+		display: flex;
+		gap: 10px;
+		flex-wrap: wrap
+	}
+	
+	.playbook-btn {
+		padding: 8px 14px;
+		background: rgba(0, 212, 255, 0.2);
+		border: 1px solid rgba(0, 212, 255, 0.4);
+		color: var(--primary);
+		cursor: pointer;
+		border-radius: 4px;
+		font-size: 11px;
+		font-weight: 600
+	}
+	
+	.playbook-btn:hover {
+		background: var(--primary);
+		color: var(--bg)
+	}
+	
+	.hotspot-strip {
+		background: rgba(255, 149, 0, 0.08);
+		padding: 12px;
+		border-left: 3px solid var(--warning);
+		border-radius: 4px;
+		margin-bottom: 15px;
+		font-size: 12px
+	}
+	
+	.hotspot-item {
+		padding: 8px 0;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.05)
+	}
+	
+	.risk-register {
+		background: var(--surface);
+		padding: 15px;
+		border-radius: 6px;
+		border-left: 4px solid;
+		margin-bottom: 15px;
+		font-size: 12px
+	}
+	
+	.risk-register.critical {
+		border-left-color: var(--danger)
+	}
+	
+	.risk-register.high {
+		border-left-color: var(--warning)
+	}
+	
+	.risk-register.medium {
+		border-left-color: #7a8aff
+	}
+	
+	.risk-title {
+		font-weight: 600;
+		margin-bottom: 4px
+	}
+	
+	.badge {
+		display: inline-block;
+		padding: 4px 10px;
+		border-radius: 3px;
+		font-size: 10px;
+		font-weight: 600;
+		text-transform: uppercase;
+		margin-right: 5px;
+		margin-bottom: 5px
+	}
+	
+	.badge-drone {
+		background: rgba(255, 68, 68, 0.3);
+		color: #ff4444
+	}
+	
+	.badge-anomaly {
+		background: rgba(0, 212, 255, 0.3);
+		color: var(--primary)
+	}
+	
+	.badge-network {
+		background: rgba(150, 100, 200, 0.3);
+		color: #9664c8
+	}
+	
+	.badge-pattern {
+		background: rgba(45, 200, 150, 0.3);
+		color: #2dc896
+	}
+	
+	.badge-critical {
+		background: rgba(255, 68, 68, 0.4);
+		color: #ff4444
+	}
+	
+	.badge-high {
+		background: rgba(255, 149, 0, 0.4);
+		color: var(--warning)
+	}
+	
+	.table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 12px;
+		margin-top: 12px
+	}
+	
+	th {
+		background: rgba(0, 212, 255, 0.1);
+		padding: 10px;
+		text-align: left;
+		border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+		font-weight: 600
+	}
+	
+	td {
+		padding: 10px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.05)
+	}
+	
+	tr:hover {
+		background: rgba(0, 212, 255, 0.05)
+	}
+	
+	.modal {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.95);
+		z-index: 1000;
+		align-items: center;
+		justify-content: center;
+		overflow-y: auto
+	}
+	
+	.modal.active {
+		display: flex
+	}
+	
+	.modal-content {
+		background: var(--surface);
+		padding: 30px;
+		border-radius: 8px;
+		max-width: 900px;
+		max-height: 90vh;
+		overflow-y: auto;
+		border: 1px solid var(--primary);
+		margin: auto
+	}
+	
+	.export-btn {
+		padding: 10px 16px;
+		background: var(--primary);
+		color: var(--bg);
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-weight: 600;
+		margin-right: 8px;
+		margin-bottom: 8px
+	}
+	
+	.threat-panel {
+		background: linear-gradient(135deg, rgba(255, 68, 68, 0.08) 0%, rgba(255, 149, 0, 0.08) 100%);
+		padding: 15px;
+		border-radius: 6px;
+		border: 1px solid rgba(255, 68, 68, 0.3);
+		margin-bottom: 15px
+	}
+	
+	.threat-slider {
+		margin: 12px 0
+	}
+	
+	.threat-slider label {
+		display: block;
+		font-size: 11px;
+		color: var(--muted);
+		margin-bottom: 4px
+	}
+	
+	.threat-slider input {
+		width: 100%;
+		cursor: pointer
+	}
+	
+	.detect-btn {
+		padding: 10px 16px;
+		background: var(--danger);
+		color: white;
+		border: none;
+		border-radius: 4px;
+		cursor: pointer;
+		font-weight: 600
+	}
+	
+	.threat-result {
+		background: rgba(0, 212, 255, 0.05);
+		padding: 12px;
+		border-radius: 4px;
+		margin-top: 10px;
+		border-left: 3px solid var(--warning);
+		font-size: 11px
+	}
+	
+	.humanitarian-section {
+		background: linear-gradient(135deg, rgba(45, 200, 150, 0.08) 0%, rgba(0, 212, 255, 0.08) 100%);
+		padding: 15px;
+		border-radius: 6px;
+		border: 1px solid rgba(45, 200, 150, 0.2);
+		margin-bottom: 15px
+	}
+	
+	.close-modal {
+		cursor: pointer;
+		font-size: 20px;
+		margin-left: auto;
+		color: var(--muted)
+	}
+	
+	.close-modal:hover {
+		color: var(--primary)
+	}
+	</style>
+</head>
+
+<body>
+	<header>
+		<div>
+			<div class="header-text">
+				<h1>⚡ BORDER SECURITY C4I COMMAND CENTER — Reference Architecture</h1>
+				<p>Demonstrating accountable, auditable AI for high-risk national security contexts</p>
+			</div>
+			<div style="text-align:right"><span class="about-link" onclick="openAboutModal()">ℹ️ About this system</span></div>
+		</div>
+		<div class="header-bottom">
+			<div id="roleSelector">
+				<label style="font-size:11px;color:var(--muted)">ROLE:</label>
+				<select id="roleSelect" onchange="switchRole()">
+					<option value="operations">OPERATIONS COMMANDER</option>
+					<option value="policy">CIVIL SERVANT/POLICY</option>
+					<option value="governance">AI GOVERNANCE OFFICER</option>
+					<option value="humanitarian">HUMANITARIAN COORDINATOR</option>
+				</select><span class="role-badge" id="roleBadge">OPERATIONS</span></div>
+			<div id="timeDisplay" style="font-size:12px;color:var(--primary);margin-left:auto">00:00:00 IST</div>
+		</div>
+	</header>
+	<div class="container">
+		<div class="tabs" id="tabBar">
+			<button class="tab-btn active" onclick="switchTab('operations')">OPERATIONS</button>
+			<button class="tab-btn" onclick="switchTab('oversight')">OVERSIGHT & AUDIT</button>
+			<button class="tab-btn" onclick="switchTab('supply')">SUPPLY CHAIN</button>
+			<button class="tab-btn" onclick="switchTab('climate')">CLIMATE INTEL</button>
+			<button class="tab-btn" onclick="switchTab('humanitarian')">HUMANITARIAN</button>
+			<button class="tab-btn" onclick="switchTab('governance')">AI GOVERNANCE</button>
+		</div>
+		<div id="operations" class="tab-content active">
+			<div class="section">
+				<div class="playbook-bar"><strong style="color:var(--primary);margin-right:15px">MISSION PLAYBOOK:</strong>
+					<button class="playbook-btn" onclick="playbook('Seal Vulnerable Stretch')">Seal Vulnerable Stretch</button>
+					<button class="playbook-btn" onclick="playbook('Pre-emptive Patrol Surge')">Pre-emptive Patrol Surge</button>
+					<button class="playbook-btn" onclick="playbook('Request Air Assets')">Request Air Assets</button>
+					<button class="playbook-btn" onclick="playbook('Emergency Alert to MHA')">Emergency Alert to MHA</button>
+				</div>
+			</div>
+			<div class="hotspot-strip"><strong>TODAY'S ANOMALIES VS USUAL</strong>
+				<div class="hotspot-item" style="margin-top:8px"><strong>⚠ EMERGING HOTSPOT</strong>: Sector 7B showing +180% activity vs 30-day avg (thermal + acoustic agree)</div>
+				<div class="hotspot-item"><strong>✔ NORMAL</strong>: Bengal North patrol route (baseline activity)</div>
+				<div class="hotspot-item"><strong>⚠ CONCERN</strong>: Mizoram settlement showing unusual cluster patterns (48 people vs usual 12)</div>
+				<div class="hotspot-item"><strong>⚠ SUPPLY CHAIN SIGNAL</strong>: Fentanyl precursor shortage detected - expect 40% fewer infiltration attempts Jan 15-30</div>
+			</div>
+			<div class="section-title">🎯 COMMANDER'S STATUS BOARD</div>
+			<div class="grid">
+				<div class="card">
+					<h3>ACTIVE THREATS (LIVE)</h3>
+					<div class="stat-value">8</div>
+					<div class="stat-label">5 ESCALATED, 3 IN REVIEW</div>
+				</div>
+				<div class="card">
+					<h3>CRITICAL ALERTS</h3>
+					<div class="stat-value">2</div>
+					<div class="stat-label">Drone swarm + Network cluster</div>
+				</div>
+				<div class="card">
+					<h3>MISSION READINESS</h3>
+					<div class="stat-value">94%</div>
+					<div class="stat-label">All units deployed</div>
+				</div>
+				<div class="card">
+					<h3>AIRSPACE STATUS</h3>
+					<div class="stat-value">ACTIVE</div>
+					<div class="stat-label">2 drones + 1 heli on patrol</div>
+				</div>
+			</div>
+			<div class="section-title">15-CAPABILITY INCIDENT QUEUE</div>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>TYPE</th>
+						<th>ZONE</th>
+						<th>RISK</th>
+						<th>MODULE SOURCE</th>
+						<th>STATUS</th>
+						<th>ACTION</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>T-2847</td>
+						<td><span class="badge badge-drone">DRONE SWARM</span></td>
+						<td>Bengal</td>
+						<td><span class="badge badge-critical">CRITICAL</span></td>
+						<td>YOLOv8 + Kalman</td>
+						<td>ESCALATED</td>
+						<td>
+							<button onclick="viewIncident(2847)" style="padding:4px 8px;font-size:10px;background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.4);color:var(--primary);border-radius:4px;cursor:pointer">Details</button>
+						</td>
+					</tr>
+					<tr>
+						<td>T-2843</td>
+						<td><span class="badge badge-anomaly">MULTIMODAL</span></td>
+						<td>Punjab</td>
+						<td><span class="badge badge-high">HIGH</span></td>
+						<td>LSTM</td>
+						<td>IN REVIEW</td>
+						<td>
+							<button onclick="viewIncident(2843)" style="padding:4px 8px;font-size:10px;background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.4);color:var(--primary);border-radius:4px;cursor:pointer">Details</button>
+						</td>
+					</tr>
+					<tr>
+						<td>T-2841</td>
+						<td><span class="badge badge-network">ENTITY NETWORK</span></td>
+						<td>Assam</td>
+						<td><span class="badge badge-high">HIGH</span></td>
+						<td>Graph Neural Net</td>
+						<td>ESCALATED</td>
+						<td>
+							<button onclick="viewIncident(2841)" style="padding:4px 8px;font-size:10px;background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.4);color:var(--primary);border-radius:4px;cursor:pointer">Details</button>
+						</td>
+					</tr>
+					<tr>
+						<td>T-2839</td>
+						<td><span class="badge badge-pattern">SPATIOTEMPORAL</span></td>
+						<td>Bengal</td>
+						<td><span class="badge badge-high">HIGH</span></td>
+						<td>ST-DBSCAN</td>
+						<td>OPEN</td>
+						<td>
+							<button onclick="viewIncident(2839)" style="padding:4px 8px;font-size:10px;background:rgba(0,212,255,0.2);border:1px solid rgba(0,212,255,0.4);color:var(--primary);border-radius:4px;cursor:pointer">Details</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<div id="oversight" class="tab-content">
+		<div class="section-title">⚠️ FAIRNESS AUDIT DASHBOARD (DPDP COMPLIANCE)</div>
+		<div class="grid">
+			<div class="card">
+				<h3>FAIRNESS INDEX</h3>
+				<div class="stat-value">92.3%</div>
+				<div class="stat-label">✓ No demographic bias detected</div>
+			</div>
+			<div class="card">
+				<h3>DEMOGRAPHIC PARITY</h3>
+				<div class="stat-value">0.91</div>
+				<div class="stat-label">FPR equal across groups</div>
+			</div>
+			<div class="card">
+				<h3>AUDIT COMPLETENESS</h3>
+				<div class="stat-value">100%</div>
+				<div class="stat-label">All decisions logged</div>
+			</div>
+			<div class="card">
+				<h3>DPDP INCIDENTS</h3>
+				<div class="stat-value">0</div>
+				<div class="stat-label">This month (breach-free)</div>
+			</div>
+		</div>
+		<div class="section-title">📊 ROOT CAUSE ANALYSIS</div>
+		<div class="grid">
+			<div class="card">
+				<h3>TOP FACTOR: MONSOON</h3>
+				<div class="stat-value">+35%</div>
+				<div class="stat-label">Infiltration risk Sep-Oct</div>
+			</div>
+			<div class="card">
+				<h3>PATROL VISIBILITY</h3>
+				<div class="stat-value">40%</div>
+				<div class="stat-label">Affects detected incidents</div>
+			</div>
+			<div class="card">
+				<h3>SUPPLY CHAIN</h3>
+				<div class="stat-value">90-day</div>
+				<div class="stat-label">Precursor shortage window</div>
+			</div>
+		</div>
+		<div class="section-title">📊 INCIDENT AUDIT FILE GENERATOR</div>
+		<button class="export-btn" onclick="generateAuditPDF()">Generate Audit PDF</button>
+		<button class="export-btn" onclick="generateAuditJSON()">Export Audit JSON</button>
+	</div>
+	<div id="supply" class="tab-content">
+		<div class="section-title">📎 SUPPLY CHAIN DISRUPTION FORECAST (90-DAY OUTLOOK)</div>
+		<div class="grid">
+			<div class="card">
+				<h3>FENTANYL PRECURSORS</h3>
+				<div class="stat-value" style="color:#ff9500">DISRUPTED</div>
+				<div class="stat-label">Jan 15-30 window
+					<br/>Infiltration impact: -40%</div>
+			</div>
+			<div class="card">
+				<h3>EXPLOSIVE COMPONENTS</h3>
+				<div class="stat-value" style="color:var(--success)">NORMAL</div>
+				<div class="stat-label">Confidence: 85%</div>
+			</div>
+			<div class="card">
+				<h3>WEAPONRY</h3>
+				<div class="stat-value" style="color:var(--warning)">CONSTRAINED</div>
+				<div class="stat-label">90-day shortage</div>
+			</div>
+			<div class="card">
+				<h3>DARK WEB INTEL</h3>
+				<div class="stat-value">12 sources</div>
+				<div class="stat-label">Last update: 2h ago</div>
+			</div>
+		</div>
+	</div>
+	<div id="climate" class="tab-content">
+		<div class="section-title">🌧️ CLIMATE-ADAPTIVE BORDER THREAT TIMELINE</div>
+		<div class="grid">
+			<div class="card">
+				<h3>JAN-FEB (DRY)</h3>
+				<div class="stat-value">BASELINE</div>
+				<div class="stat-label">Normal patrol effectiveness</div>
+			</div>
+			<div class="card">
+				<h3>MAR-MAY (HOT)</h3>
+				<div class="stat-value">+15%</div>
+				<div class="stat-label">Heat stress increases attempts</div>
+			</div>
+			<div class="card">
+				<h3>JUN-SEP (MONSOON)</h3>
+				<div class="stat-value">+35%</div>
+				<div class="stat-label">Poor visibility +40%</div>
+			</div>
+			<div class="card">
+				<h3>OCT-NOV (COOL)</h3>
+				<div class="stat-value">+20%</div>
+				<div class="stat-label">Optimal infiltration window</div>
+			</div>
+		</div>
+		<div style="background:rgba(0,212,255,0.08);padding:15px;border-radius:6px"><strong>NEXT 90 DAYS:</strong> ELEVATED (Monsoon approaching). Current score: 18/25. Recommended: Deploy thermal IR, adjust shift timing to 2-4am.</div>
+	</div>
+	<div id="governance" class="tab-content">
+		<div class="section-title">📄 AI RESTRAINT INDEX & DECISION GOVERNANCE</div>
+		<div class="restraint-index">
+			<div class="restraint-score">Overall Restraint Index: 0.73 (HIGH)</div>
+			<p>When index > 0.60, system enters restraint posture: fewer recommendations, advisory-only mode, block auto-escalation</p>
+			<div class="restraint-breakdown">
+				<div class="restraint-item">
+					<div class="restraint-label">Uncertainty</div>
+					<div class="restraint-val">0.22</div>
+				</div>
+				<div class="restraint-item">
+					<div class="restraint-label">Bias Risk</div>
+					<div class="restraint-val">0.18</div>
+				</div>
+				<div class="restraint-item">
+					<div class="restraint-label">Civilian Harm</div>
+					<div class="restraint-val">0.40</div>
+				</div>
+				<div class="restraint-item">
+					<div class="restraint-label">Legal Exposure</div>
+					<div class="restraint-val">0.23</div>
+				</div>
+			</div>
+		</div>
+		<div style="font-size:11px;color:var(--muted);margin-bottom:15px"><strong>Action:</strong> System state = AI ADVISORY ONLY. No kinetic recommendations without human override. All decisions logged and marked for review.</div>
+	</div>
+	<div class="section-title">📂 HIGH-RISK AI RISK REGISTER</div>
+	<div class="risk-register critical">
+		<div class="risk-title">🔴 CRITICAL: Data Drift in Sensor Fusion (Monsoon)</div>
+		<p style="font-size:11px;margin:5px 0">Thermal camera performance degrades 15% in heavy rain. Mitigated by: manual review + satellite backup. Monitor: Monthly calibration.</p>
+	</div>
+	<div class="risk-register high">
+		<div class="risk-title">🟡 HIGH: Fairness Shift in Border Zone X</div>
+		<p style="font-size:11px;margin:5px 0">FPR increased 2.1% for demographic group (confidence 0.71). Action: Threshold adjustment + retraining (ETA: 1 week).</p>
+	</div>
+	<div class="risk-register high">
+		<div class="risk-title">🟡 HIGH: Model Performance Degradation</div>
+		<p style="font-size:11px;margin:5px 0">Entity linking accuracy dropped 3% in Assam sector. Cause: Training data skew. Fix: Retrain with zone-balanced data (ETA: 1 week).</p>
+	</div>
+	<div class="risk-register medium">
+		<div class="risk-title">🔵 MEDIUM: Unexplained Decision</div>
+		<p style="font-size:11px;margin:5px 0">1 incident escalated without clear sensor evidence. Investigation: Under review. Accountability: Logged + flagged for auditor.</p>
+	</div>
+	</div>
+	</div>
+	<div id="humanitarian" class="tab-content">
+		<div class="section-title">🌿 CIVILIAN MOVEMENT & HUMANITARIAN RISK</div>
+		<div class="humanitarian-section">
+			<div style="font-size:10px;color:var(--success);text-transform:uppercase;margin-bottom:8px">⚡ DUAL-USE VALUE</div>
+			<div style="font-size:12px;line-height:1.5;color:var(--text)">This analysis enables: (1) Early humanitarian crisis warning (floods, displacement) for resource pre-positioning, and (2) Smart borders for proportionate enforcement. Frame: civilian mobility monitoring.</div>
+		</div>
+		<div class="grid">
+			<div class="card" style="border:1px solid rgba(45,200,150,0.3)">
+				<h3>CROWD ANOMALY (Thermal)</h3>
+				<div class="stat-value">4,200</div>
+				<div class="stat-label">People detected Cox's Bazar (vs 800 baseline)</div>
+			</div>
+			<div class="card" style="border:1px solid rgba(45,200,150,0.3)">
+				<h3>SURGE PROBABILITY (48H)</h3>
+				<div class="stat-value">88%</div>
+				<div class="stat-label">Mass civilian crossing likelihood</div>
+			</div>
+			<div class="card" style="border:1px solid rgba(45,200,150,0.3)">
+				<h3>HUMANITARIAN NEEDS</h3>
+				<div class="stat-value">PREP</div>
+				<div class="stat-label">Medical, water, shelter for 3K</div>
+			</div>
+			<div class="card" style="border:1px solid rgba(45,200,150,0.3)">
+				<h3>EARLY ALERT</h3>
+				<div class="stat-value">24-48H</div>
+				<div class="stat-label">Warning to State/NGOs</div>
+			</div>
+		</div>
+	</div>
+	<div id="governance" class="tab-content">
+		<div class="section-title">📄 AI RESTRAINT INDEX & DECISION GOVERNANCE</div>
+		<div class="restraint-index">
+			<div class="restraint-score">Overall Restraint Index: 0.73 (HIGH)</div>
+			<div style="font-size:12px;color:var(--text);margin-bottom:10px">When index > 0.60, system enters restraint posture: fewer recommendations, advisory-only mode, block auto-escalation</div>
+			<div class="restraint-breakdown">
+				<div class="restraint-item">
+					<div class="restraint-label">Uncertainty</div>
+					<div class="restraint-val">0.22</div>
+				</div>
+				<div class="restraint-item">
+					<div class="restraint-label">Bias Risk</div>
+					<div class="restraint-val">0.18</div>
+				</div>
+				<div class="restraint-item">
+					<div class="restraint-label">Civilian Harm</div>
+					<div class="restraint-val">0.40</div>
+				</div>
+				<div class="restraint-item">
+					<div class="restraint-label">Legal Exposure</div>
+					<div class="restraint-val">0.23</div>
+				</div>
+			</div>
+			<div style="margin-top:12px;font-size:11px;color:var(--muted)"><strong>Action:</strong> System state = AI ADVISORY ONLY. No kinetic recommendations without human override. All decisions logged and marked for review.</div>
+		</div>
+		<div class="section-title">🔍 INCIDENT T-2847: DECISION CONTEXT PANEL</div>
+		<div class="decision-context">
+			<div class="decision-label">🔎 What triggered this?</div>Thermal + acoustic anomaly >3x 30-day baseline within 2km of vulnerable stretch. Cross-checked with satellite imagery (5 people detected vs thermal showing 3 heat signatures). Fusion conflict flagged but LiDAR confirms object count.</div>
+		<div class="decision-context" style="margin-top:10px">
+			<div class="decision-label">What data contributed?</div>Modalities: Thermal, Acoustic, Satellite, Patrol logs, OSINT. Data quality: Thermal sensor has 15% humidity bias in monsoon season. Acoustic equipment just calibrated. Satellite 12h old.</div>
+		<div class="decision-context" style="margin-top:10px">
+			<div class="decision-label">What uncertainty exists?</div><strong>Model confidence: MEDIUM (0.71)</strong> Two models disagree on classification. Recent data drift detected in thermal feed (accuracy down 3% this week). Recommendation: Treat as exploratory, not definitive.</div>
+	</div>
+	<div class="section-title">📋 RESTRAINT & CONFIDENCE INDICATOR</div>
+	<div class="card">
+		<h3>SYSTEM STATE</h3>
+		<div class="stat-value" style="color:#ff9500;font-size:18px">AI ADVISORY ONLY</div>
+		<div style="font-size:11px;color:var(--muted);margin-top:8px"><strong>Reason:</strong> Restraint Index 0.73 >threshold (0.60). Model confidence MEDIUM. Data conflict: satellite/thermal mismatch. Civilian presence unconfirmed (high harm risk 0.40).</div>
+	</div>
+	<div class="card" style="margin-top:15px">
+		<h3>CONFIDENCE LEVEL: MEDIUM (0.71)</h3>
+		<div style="font-size:11px;color:var(--muted);margin-top:8px"><strong>🔠 Bias Risk:</strong> ELEVATED - Recent incidents cluster disproportionately in Sector 3 where training data is sparse (only 8 samples vs 200 in Sector 1). Recommendation: Apply geographic fairness correction.
+			<br/><strong>⚠️ Data Conflict:</strong> Satellite and ground radar disagree on object count (5 vs 3). Human verification strongly recommended before escalation.</div>
+	</div>
+	<div class="section-title">📚 Human Action Log</div>
+	<div class="human-action-log"><strong>Human Approvals:</strong> 3 | <strong>Roles:</strong> Sector Commander, Ops Analyst, Duty Officer | <strong>IDs:</strong> H-9f3a, H-2b17, H-77c1 (internal hashes)
+		<br/>
+		<br/><strong>2026-01-05 20:15</strong> (H-9f3a, Sector Commander): Detected threat. Decision: Hold for verification. Reason: Civilian presence unclear, thermal/satellite conflict.
+		<br/><strong>2026-01-05 21:30</strong> (H-2b17, Ops Analyst): Reviewed data fusion. Decision: Request aerial confirmation via drone. Rationale: Reduce false positive risk (FPR currently 5.2%).
+		<br/><strong>2026-01-05 22:45</strong> (H-77c1, Duty Officer): Approved aerial survey. Decision: Deploy drone, establish no-kill zone until confirmed threat. Fairness check: Applied geographic correction to bias risk.</div>
+	<div class="section-title">📄 Generate Legal Bundle</div>
+	<div class="legal-bundle"><strong>Evidence View:</strong> This export is designed as a standardized, cryptographically sealed record of Incident T-2847 for courts, auditors, and oversight institutions.
+		<br/>
+		<div style="margin-top:10px;font-size:11px;color:var(--muted)"><strong>Includes:</strong>
+			<br/>✓ Inputs: Sensor snapshots (timestamp, locations), model versions, configuration parameters
+			<br/>✓ Model states: 3 ensemble models, parameter snapshots, intermediate scores
+			<br/>✓ Human decisions: Action log, approvals count (3), roles, hashed IDs, rationales
+			<br/>✓ Alternatives considered: Option A (Escalate with drone strike) vs Option B (Non-kinetic surveillance) [CHOSEN]
+			<br/>✓ Policy context: Restraint Index 0.73, active fairness thresholds, rules-of-engagement version 2.1
+			<br/>✓ Cryptographic guarantees: Hash-chained audit log (tampering evident), time-sealed timestamps, evidence signature</div>
+	</div>
+	<button class="export-btn" onclick="generateLegalBundle()">Generate Legal Bundle (PDF+JSON)</button>
+	<button class="export-btn" onclick="Live Threat Detection Panel()">Preview Court-Ready Evidence</button>
+	<div class="section-title">🔍 Live Threat Detection Panel</div>
+	<div class="threat-panel">
+		<div style="font-size:11px;margin-bottom:12px;color:var(--muted)"><strong>Simulated multimodal sensor inputs:</strong> Adjust sliders to simulate real-time threat scoring. Restraint Index updates dynamically.</div>
+		<div class="threat-slider">
+			<label>Satellite Detections: <span id="satVal">0</span></label>
+			<input type="range" id="satSlider" min="0" max="10" value="0" oninput="updateThreat()" />
+		</div>
+		<div class="threat-slider">
+			<label>Thermal Anomalies: <span id="thermalVal">0</span></label>
+			<input type="range" id="thermalSlider" min="0" max="10" value="0" oninput="updateThreat()" />
+		</div>
+		<div class="threat-slider">
+			<label>Acoustic Intensity (dB): <span id="acousticVal">0</span></label>
+			<input type="range" id="acousticSlider" min="0" max="120" value="0" oninput="updateThreat()" />
+		</div>
+		<button class="detect-btn" onclick="detectThreat()">Run Threat Detection</button>
+		<div id="threatResult" class="threat-result" style="display:none">
+			<div><strong>Anomaly Score: <span id="anomalyScore">0.00</span></strong></div>
+			<div style="margin-top:6px;font-size:10px"><strong>Status:</strong> <span id="threatStatus">Normal</span></div>
+			<div style="margin-top:6px;font-size:10px"><strong>Fairness Parity:</strong> <span id="fairnessParity">0.92</span></div>
+			<div style="margin-top:6px;font-size:10px"><strong>Audit ID:</strong> INC-<span id="auditID">1767935543</span></div>
+			<div style="margin-top:6px;font-size:10px;color:var(--muted)"><strong>AI Restraint State:</strong> <span id="restraintState">NORMAL</span></div>
+		</div>
+	</div>
+	</div>
+	</div>
+	<div id="incidentModal" class="modal">
+		<div class="modal-content">
+			<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px">
+				<h2 style="color:var(--primary);margin:0">Incident Details: T-<span id="incID">2847</span></h2><span class="close-modal" onclick="closeModal()">×</span></div>
+			<p id="incidentText"></p>
+			<button onclick="closeModal()" style="margin-top:15px;background:var(--muted);color:var(--bg);padding:10px 16px;border:none;border-radius:4px;cursor:pointer">Close</button>
+		</div>
+	</div>
+	<div id="aboutModal" class="modal">
+		<div class="modal-content">
+			<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:15px">
+				<h2 style="color:var(--primary);margin:0">About This System</h2><span class="close-modal" onclick="closeAboutModal()">×</span></div>
+			<div style="font-size:12px;line-height:1.7;color:var(--text)">
+				<p style="margin-bottom:10px"><strong>RESEARCH-GRADE REFERENCE IMPLEMENTATION</strong>
+					<br/>This demonstrates how high-risk AI systems could be governed, audited, and operationalized in democratic contexts.</p>
+				<p style="margin-bottom:10px"><strong>NOT:</strong> a live system, NOT connected to classified data, NOT an official deployment.</p>
+				<p style="margin-bottom:10px"><strong>CORE INNOVATIONS:</strong></p>
+				<ul style="margin-left:20px">
+					<li><strong>AI Restraint Index:</strong> Single score (uncertainty + bias + harm + legal exposure). When >0.60: advisory-only mode, block escalation.</li>
+					<li><strong>Legal Bundles:</strong> Cryptographically sealed evidence (inputs, models, humans, alternatives, policy). Court-ready.</li>
+					<li><strong>Decision Context:</strong> Trigger source, data provenance, uncertainty all visible.</li>
+					<li><strong>Restraint Indicator:</strong> Real-time system state, confidence, bias warnings, conflicts.</li>
+					<li><strong>Action Logs:</strong> Role-based approval chains, hashed IDs (privacy + accountability).</li>
+					<li><strong>Live Threat Detection:</strong> Multimodal fusion + fairness parity calculation, integrated in-dashboard.</li>
+				</ul>
+				<p style="margin-bottom:10px"><strong>WHY INDIA CAN LEAD:</strong> Active judiciary + RTI culture + DPDP enforcement needs = perfect conditions.</p>
+			</div>
+			<button onclick="closeAboutModal()" style="margin-top:15px;background:var(--primary);color:var(--bg);padding:10px 16px;border:none;border-radius:4px;cursor:pointer">Close</button>
+		</div>
+	</div>
+	<script>
+	function switchTab(t) {
+		document.querySelectorAll('.tab-content').forEach(e => e.classList.remove('active'));
+		document.querySelectorAll('.tab-btn').forEach(e => e.classList.remove('active'));
+		document.getElementById(t).classList.add('active');
+		event.target.classList.add('active');
+	}
+
+	function switchRole() {
+		const r = document.getElementById('roleSelect').value;
+		document.getElementById('roleBadge').textContent = r.toUpperCase().replace(/_/g, ' ');
+	}
+
+	function updateTime() {
+		const n = new Date();
+		const h = String(n.getHours()).padStart(2, '0');
+		const m = String(n.getMinutes()).padStart(2, '0');
+		const s = String(n.getSeconds()).padStart(2, '0');
+		document.getElementById('timeDisplay').textContent = `${h}:${m}:${s} IST`;
+	}
+
+	function viewIncident(id) {
+		const modal = document.getElementById('incidentModal');
+		document.getElementById('incID').textContent = id;
+		document.getElementById('incidentText').innerHTML = `<strong>Incident T-${id}</strong><p style="margin-top:10px;font-size:11px">Anomaly: 0.89 | Risk: HIGH | Confidence: 0.87<br/>Restraint Index: 0.73 (ADVISORY-ONLY)<br/>Timeline: 20:15-23:00 IST<br/>Approvals: 3 (Commander, Analyst, Officer)<br/>Fairness: Parity 0.91, Equalized Odds 0.88</p>`;
+		modal.classList.add('active');
+	}
+
+	function closeModal() {
+		document.getElementById('incidentModal').classList.remove('active');
+	}
+
+	function openAboutModal() {
+		document.getElementById('aboutModal').classList.add('active');
+	}
+
+	function closeAboutModal() {
+		document.getElementById('aboutModal').classList.remove('active');
+	}
+
+	function playbook(a) {
+		alert(`${a}\n\nMission playbook executed.`);
+	}
+
+	function updateThreat() {
+		document.getElementById('satVal').textContent = document.getElementById('satSlider').value;
+		document.getElementById('thermalVal').textContent = document.getElementById('thermalSlider').value;
+		document.getElementById('acousticVal').textContent = document.getElementById('acousticSlider').value;
+	}
+
+	function detectThreat() {
+		const s = parseInt(document.getElementById('satSlider').value) / 10;
+		const t = parseInt(document.getElementById('thermalSlider').value) / 10;
+		const a = parseInt(document.getElementById('acousticSlider').value) / 120;
+		const score = (s * 0.3 + t * 0.4 + a * 0.3).toFixed(2);
+		const status = score > 0.5 ? 'THREAT' : 'Normal';
+		const restraint = score > 0.7 ? 'RESTRAINT' : 'NORMAL';
+		document.getElementById('anomalyScore').textContent = score;
+		document.getElementById('threatStatus').textContent = status;
+		document.getElementById('fairnessParity').textContent = (0.92 - Math.random() * 0.1).toFixed(2);
+		document.getElementById('restraintState').textContent = restraint;
+		document.getElementById('threatResult').style.display = 'block';
+	}
+
+	function generateLegalBundle() {
+		alert('Legal Bundle:\n\nFile: T-2847_Evidence.pdf\n✓ Model card\n✓ Decision log\n✓ Approvals (hashed)\n✓ Alternatives\n✓ Fairness metrics\n✓ Cryptographic seal');
+	}
+
+	function generateAuditPDF() {
+		alert('Audit PDF\n\n- Incident T-2847\n- Fairness: PASS\n- Approvals: 3\n- Hash: b7a3c9d2e1f8');
+	}
+
+	function generateAuditJSON() {
+		alert('{"incident":"T-2847","restraint":0.73,"fairness":0.91,"sealed":true}');
+	}
+
+	function Live Threat Detection Panel() {
+		alert('Evidence (Court-Ready):\n\nINCIDENT: T-2847\nINPUTS: Thermal, Acoustic, Satellite\nMODELS: 3 ensemble\nAPPROVALS: 3 (hashed IDs)\nALTERNATIVES: 2 considered\nRESTRAINT: 0.73 (HIGH)\nFAIRNESS: 0.91 parity\nSTATUS: Audit-ready, sealed');
+	}
+	setInterval(updateTime, 1000);
+	updateTime();
+	</script>
+</body>
+
+</html>
