@@ -1,44 +1,56 @@
-# Border Security C4I Governance Dashboard
+# PRAVAAH C4I
 
-**A governance-first reference architecture demonstrating accountable, auditable AI for high-stakes national security contexts.**
+**A dual-use AI governance framework for national security and humanitarian management.**
 
-**Live Demo:** [border-security-dashboard.vercel.app](https://border-security-dashboard.vercel.app)
+**Live:** [pravaah-c4i.vercel.app](https://pravaah-c4i.vercel.app)
 
 ---
 
 ## What This Is
 
-This dashboard is a research-grade portfolio demonstration — not a live system, not connected to classified data, not an official deployment. It shows how AI governance principles (fairness, accountability, transparency, human oversight) can be **operationalised in system design**, not just theorised about.
+PRAVAAH C4I is a research-grade reference architecture exploring what accountable, auditable AI governance would require where national security mandates and humanitarian obligations meet — specifically in the context of India's policy vacuum around refugee and displacement management.
 
-The architecture was designed and specified by **Deeksha Pandey**, drawing on expertise in forced migration, international relations, and enterprise data governance. It was built entirely through AI-assisted development — demonstrating that deep domain knowledge and governance instincts, not traditional coding, are the core competencies required to build meaningful AI governance tools.
+The core argument: AI systems operating at the intersection of security and humanitarian protection require governance architectures that don't yet exist in policy. This is what one would look like.
+
+It is **not** a live system, **not** connected to classified data, and **not** an official deployment. All operational data is illustrative. The architecture demonstrates governance mechanisms — restraint indexing, fairness auditing, humanitarian safeguards, conflict resolution protocols, and legal accountability chains — as a reference for how such systems could and should be governed.
+
+Built entirely through AI-assisted development. Domain knowledge and governance instincts, not traditional coding, are the core competencies this project represents.
+
+---
+
+## The Problem
+
+India has porous borders, active security imperatives, complex regional displacement dynamics, and no formal refugee legislation. AI systems are increasingly deployed in border management contexts globally — but the governance frameworks that should constrain them are absent, especially in legal vacuums like India's.
+
+PRAVAAH C4I asks: if such a system were deployed, what would accountability require? What mechanisms would hold security and humanitarian mandates in genuine tension rather than collapsing one into the other?
 
 ---
 
 ## Core Innovations
 
 ### 1. AI Restraint Index
-A composite score across four orthogonal risk dimensions — uncertainty, bias risk, civilian harm potential, and legal exposure. When the index exceeds **0.60**, the system automatically enters advisory-only posture: no autonomous action, no auto-escalation, all outputs flagged for human review. Civilian harm potential is weighted as lexically prior — it cannot be traded off against improved model confidence.
+A transparent composite score across four governance dimensions — civilian harm potential (0.40), uncertainty (0.25), legal exposure (0.20), and bias risk (0.15). When the index exceeds **0.60**, the system enters advisory-only posture: no autonomous action, no auto-escalation, all outputs flagged for human review. Formula and weights are visible and auditable — the scoring methodology is an expandable panel, not a black box. Civilian harm is weighted as lexically prior and cannot be traded off against improved confidence scores.
 
-### 2. Legal Bundle Generator
-Every incident generates a cryptographically sealed, court-ready evidence package containing: sensor snapshots, model versions and parameter states, complete human decision chains with hashed role IDs, alternatives considered, and active policy context. Designed to function as prima facie evidence for courts, oversight bodies, and independent auditors.
+### 2. Joint Review Mode
+When the security stream and humanitarian stream reach conflicting classifications for the same movement event — one flagging infiltrators, the other identifying displaced civilians — the conflict triggers mandatory Joint Review. Neither stream's recommendation can proceed without Governance Officer review and documented rationale. The conflict is logged as a governance exception and included in the Legal Bundle. This is the core governance contribution: making stream conflict visible, mandatory, and auditable rather than resolved silently by the AI.
 
-### 3. Decision Context Panels
-For every incident, operators see in plain language: what triggered the detection, what data contributed and its quality flags, what uncertainty exists, and why the model confidence is rated as it is. Legibility is a governance feature, not a UI afterthought.
+### 3. Dynamic Rules of Engagement
+A status indicator that shifts system behaviour based on operational context: Standard Monitoring, Active Crisis, or Humanitarian Emergency. In Humanitarian Emergency mode, the restraint threshold tightens, enforcement actions are suspended pending humanitarian assessment, and non-harmful default posture activates. The ROE state is a configurable governance parameter — any change is logged.
 
-### 4. Dual-Use Value Framework
-The same sensor infrastructure serves two parallel analytical streams: security threat detection and humanitarian early warning. When these streams reach conflicting conclusions about the same detection event — as in incident T-2847 — the conflict is treated as a mandatory escalation trigger, not an ambiguity for the AI to resolve alone.
+### 4. Fairness-Humanitarian Conflict Resolution
+When demographic parity optimisation conflicts with an active protection mandate, the protection mandate takes precedence. This is explicit, not assumed. Demographic parity is a statistical property of model outputs. Non-refoulement is a legal obligation with individual, irreversible consequences. They are not equivalent constraints, and the architecture treats them accordingly. Conflicts are logged as governance exceptions.
 
-### 5. Humanitarian Parallel Channel
-A structurally independent advisory stream, staffed under a separate mandate and reporting line, whose outputs are not filtered by the security chain of command before reaching the AI Governance Officer. Independence is an architectural feature — it cannot be suppressed by operational pressure.
+### 5. Legal Bundle Generator
+Every incident generates a cryptographically sealed, court-ready evidence package: sensor snapshots, model versions and parameter states, complete human decision chains with hashed role IDs, alternatives considered, and active policy context. Designed to function as prima facie evidence for courts, oversight bodies, and independent auditors.
 
-### 6. Demographic Fairness Auditing
-Real-time parity tracking across nationality and demographic groups. Bias flags with root cause analysis. Geographic fairness correction coefficients applied at model layer. DPDP Act compliance status tracked per provision.
+### 6. Humanitarian Parallel Channel
+A structurally independent advisory stream operating under a separate mandate and reporting line. Its outputs are not filtered by the security chain of command before reaching the AI Governance Officer. Independence is architectural — it cannot be suppressed by operational pressure.
 
-### 7. Role-Based Human Action Logs
-Pseudonymized hashed role IDs (e.g. H-9f3a) preserve individual privacy while maintaining complete, reconstructible accountability chains for auditors and oversight institutions.
+### 7. Demographic Fairness Auditing
+Real-time parity tracking across nationality and demographic groups. Bias flags with root cause analysis. Geographic fairness correction coefficients applied at model layer. Group C parity gap (0.81, below 0.85 threshold) is flagged with intervention logged and retraining scheduled — the correction mechanism and its rationale are both visible.
 
-### 8. Live Threat Detection Panel
-Multimodal sensor fusion simulation — satellite detections, thermal anomalies, acoustic intensity — with real-time anomaly scoring, fairness parity calculation, and restraint state output on demand.
+### 8. Role-Based Human Action Logs
+Pseudonymised hashed role IDs (e.g. H-9f3a) preserve individual privacy while maintaining complete, reconstructible accountability chains. Human oversight is not a checkbox — it is a timestamped, role-attributed, rationale-documented record.
 
 ---
 
@@ -46,19 +58,19 @@ Multimodal sensor fusion simulation — satellite detections, thermal anomalies,
 
 | Tab | Contents |
 |-----|----------|
-| **Operations** | Mission Playbook, Live Anomaly Strip, Commander's Status Board, 15-Capability Incident Queue |
+| **Operations** | Governance-Constrained Actions, ROE Status, Live Anomaly Strip, Commander's Status Board, Incident Queue with Joint Review trigger |
 | **Oversight & Audit** | Fairness Index, Demographic Parity Breakdown, Root Cause Analysis, Audit PDF/JSON Export |
-| **Supply Chain** | 90-Day Disruption Forecast, Dark Web Intel, Threat Vector Mapping |
-| **Climate Intel** | Seasonal Risk Timeline, 90-Day Forecast, Sensor Degradation Windows |
-| **Humanitarian** | Displacement Early Warning, Cox's Bazar Surge Alert, Dual-Use Framework, Parallel Channel |
-| **AI Governance** | Restraint Index, Decision Context, Human Action Log, Legal Bundle, Risk Register, Live Detection |
-| **About** | Architecture explanation, governance frameworks, contact |
+| **Climate Intel** | Seasonal Risk Timeline, 90-Day Forecast, Sensor Degradation Windows, Monsoon Restraint Posture |
+| **Humanitarian** | Displacement Early Warning, Cox's Bazar Surge Alert, Dual-Use Framework, Parallel Channel, Fairness-Humanitarian Conflict Resolution Principle |
+| **AI Governance** | Restraint Index with Scoring Methodology, Decision Context, Human Action Log, Legal Bundle Generator, Risk Register, Live Detection Panel |
+| **About** | Architecture explanation, governance frameworks, design principles |
+| **Joint Review** | Activated on stream conflict — shows security vs. humanitarian assessments, conflict resolution principle, Governance Officer action log |
 
 ---
 
 ## Governance Frameworks Applied
 
-- EU AI Act — High-Risk System Provisions (Article 14 Human Oversight)
+- EU AI Act — High-Risk System Provisions (Annex III, Article 14 Human Oversight)
 - Digital Personal Data Protection Act 2023 (India)
 - UN Guiding Principles on Business and Human Rights — Pillar II
 - UNHCR Data Protection Standards & Digital SORA Framework
@@ -71,11 +83,11 @@ Multimodal sensor fusion simulation — satellite detections, thermal anomalies,
 
 ## Architecture
 
-**Frontend:** Single-file HTML/CSS/JavaScript — no dependencies, no build process, no external APIs. Fully self-contained. Deployable to any static host.
+**Frontend:** Single-file HTML/CSS/JavaScript. No dependencies, no build process, no external APIs. Fully self-contained. Deployable to any static host.
 
-**Detection Logic:** Client-side multimodal sensor fusion simulation. Satellite, thermal, and acoustic inputs feed a weighted anomaly score with live fairness parity calculation and restraint state output.
+**Detection logic:** Client-side multimodal sensor fusion simulation. Satellite, thermal, and acoustic inputs feed a weighted anomaly score with live fairness parity calculation and restraint state output.
 
-**Deployment:** GitHub → Vercel (automatic on push to `main`). Zero configuration required.
+**Deployment:** GitHub → Vercel (automatic on push to `main`).
 
 ```bash
 git clone https://github.com/OpalSonoma/border-security-dashboard.git
@@ -85,23 +97,14 @@ cd border-security-dashboard
 
 ---
 
-## Why India Can Lead on AI Governance
+## Why India
 
-Three conditions that make India uniquely positioned to adopt this architecture at scale:
+India's conditions make this architecture both necessary and adoptable at scale:
 
-1. **Active judiciary** — higher courts already engage deeply with digital forensics and constitutional rights. Cryptographic audit trails are familiar evidentiary objects.
-2. **RTI culture** — public sector transparency norms make logging and documentation expectations high. AI systems that produce auditable records fit naturally.
-3. **DPDP enforcement** — the Ministry of Data Protection will demand fairness audits, consent trails, and demonstrable safeguards. This architecture provides them out of the box.
-
----
-
-## Contact
-
-**Deeksha Pandey**
-AI Governance & Policy · Forced Migration & Border Tech · Data Governance
-
-- Email: [deeksha.pandey137@gmail.com](mailto:deeksha.pandey137@gmail.com)
-- LinkedIn: [linkedin.com/in/deekshapandey137](https://linkedin.com/in/deekshapandey137)
+- **Policy vacuum** — no formal refugee legislation means AI systems operating in this space face no governance guardrails. This architecture proposes what those guardrails should look like.
+- **Active judiciary** — higher courts already engage with digital forensics and constitutional rights. Cryptographic audit trails are familiar evidentiary objects.
+- **RTI culture** — public sector transparency norms make logging and documentation expectations high.
+- **DPDP enforcement** — the Ministry of Data Protection will require fairness audits, consent trails, and demonstrable safeguards. This architecture provides them.
 
 ---
 
@@ -111,4 +114,4 @@ MIT License — See LICENSE file for details.
 
 ---
 
-*This is a portfolio demonstration. All operational data is illustrative and does not represent real intelligence, real incidents, or real individuals. Last updated: March 2026.*
+*Reference architecture. All operational data is illustrative and does not represent real intelligence, real incidents, or real individuals. Last updated: March 2026.*
